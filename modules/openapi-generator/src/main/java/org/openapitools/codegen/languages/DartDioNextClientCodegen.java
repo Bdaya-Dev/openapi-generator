@@ -58,15 +58,9 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
     public DartDioNextClientCodegen() {
         super();
 
-        modifyFeatureSet(features -> features
-                .includeClientModificationFeatures(
-                        ClientModificationFeature.Authorizations,
-                        ClientModificationFeature.UserAgent
-                )
-        );
-        generatorMetadata = GeneratorMetadata.newBuilder()
-                .stability(Stability.EXPERIMENTAL)
-                .build();
+        modifyFeatureSet(features -> features.includeClientModificationFeatures(
+                ClientModificationFeature.Authorizations, ClientModificationFeature.UserAgent));
+        generatorMetadata = GeneratorMetadata.newBuilder().stability(Stability.EXPERIMENTAL).build();
 
         outputFolder = "generated-code/dart-dio-next";
         embeddedTemplateDir = "dart/libraries/dio";
@@ -76,7 +70,8 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
         modelPackage = "lib.src.model";
 
         supportedLibraries.put(SERIALIZATION_LIBRARY_BUILT_VALUE, "[DEFAULT] built_value");
-        final CliOption serializationLibrary = CliOption.newString(CodegenConstants.SERIALIZATION_LIBRARY, "Specify serialization library");
+        final CliOption serializationLibrary = CliOption.newString(CodegenConstants.SERIALIZATION_LIBRARY,
+                "Specify serialization library");
         serializationLibrary.setEnum(supportedLibraries);
         serializationLibrary.setDefault(SERIALIZATION_LIBRARY_DEFAULT);
         cliOptions.add(serializationLibrary);
@@ -86,7 +81,8 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
 
         final Map<String, String> dateOptions = new HashMap<>();
         dateOptions.put(DATE_LIBRARY_CORE, "[DEFAULT] Dart core library (DateTime)");
-        dateOptions.put(DATE_LIBRARY_TIME_MACHINE, "Time Machine is date and time library for Flutter, Web, and Server with support for timezones, calendars, cultures, formatting and parsing.");
+        dateOptions.put(DATE_LIBRARY_TIME_MACHINE,
+                "Time Machine is date and time library for Flutter, Web, and Server with support for timezones, calendars, cultures, formatting and parsing.");
         dateOption.setEnum(dateOptions);
         cliOptions.add(dateOption);
     }
@@ -122,8 +118,10 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
         super.processOpts();
 
         if (StringUtils.isEmpty(System.getenv("DART_POST_PROCESS_FILE"))) {
-            LOGGER.info("Environment variable DART_POST_PROCESS_FILE not defined so the Dart code may not be properly formatted. To define it, try `export DART_POST_PROCESS_FILE=\"/usr/local/bin/dartfmt -w\"` (Linux/Mac)");
-            LOGGER.info("NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).");
+            LOGGER.info(
+                    "Environment variable DART_POST_PROCESS_FILE not defined so the Dart code may not be properly formatted. To define it, try `export DART_POST_PROCESS_FILE=\"/usr/local/bin/dartfmt -w\"` (Linux/Mac)");
+            LOGGER.info(
+                    "NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).");
         }
 
         if (!additionalProperties.containsKey(CodegenConstants.SERIALIZATION_LIBRARY)) {
@@ -178,8 +176,10 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
     }
 
     private void configureSerializationLibraryBuiltValue(String srcFolder) {
-        supportingFiles.add(new SupportingFile("serialization/built_value/serializers.mustache", srcFolder, "serializers.dart"));
-        supportingFiles.add(new SupportingFile("serialization/built_value/api_util.mustache", srcFolder, "api_util.dart"));
+        supportingFiles.add(
+                new SupportingFile("serialization/built_value/serializers.mustache", srcFolder, "serializers.dart"));
+        supportingFiles
+                .add(new SupportingFile("serialization/built_value/api_util.mustache", srcFolder, "api_util.dart"));
 
         typeMapping.put("Array", "BuiltList");
         typeMapping.put("array", "BuiltList");
@@ -210,7 +210,8 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                 imports.put("OffsetDate", "package:time_machine/time_machine.dart");
                 imports.put("OffsetDateTime", "package:time_machine/time_machine.dart");
                 if (SERIALIZATION_LIBRARY_BUILT_VALUE.equals(library)) {
-                    supportingFiles.add(new SupportingFile("serialization/built_value/offset_date_serializer.mustache", srcFolder, "local_date_serializer.dart"));
+                    supportingFiles.add(new SupportingFile("serialization/built_value/offset_date_serializer.mustache",
+                            srcFolder, "local_date_serializer.dart"));
                 }
                 break;
             default:
@@ -220,8 +221,10 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                     typeMapping.put("date", "Date");
                     typeMapping.put("Date", "Date");
                     importMapping.put("Date", "package:" + pubName + "/src/model/date.dart");
-                    supportingFiles.add(new SupportingFile("serialization/built_value/date.mustache", srcFolder + File.separator + "model", "date.dart"));
-                    supportingFiles.add(new SupportingFile("serialization/built_value/date_serializer.mustache", srcFolder, "date_serializer.dart"));
+                    supportingFiles.add(new SupportingFile("serialization/built_value/date.mustache",
+                            srcFolder + File.separator + "model", "date.dart"));
+                    supportingFiles.add(new SupportingFile("serialization/built_value/date_serializer.mustache",
+                            srcFolder, "date_serializer.dart"));
                 }
                 break;
         }
@@ -279,12 +282,14 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
         }
     }
 
-    /*This does 3 things
-        1) makes sure that inline enums are unique per operation by appending opName to the enum name
-        2) Solves a bug where if we have a container of enum, the "allowableValues" property doesn't get passed down to the "items" property
-        3) provides defaultValueWithEnum as a vendor ext which gives full information about the default value, including its name
-    */
-    private void fixEnumParam(String opName,IJsonSchemaValidationProperties param) {
+    /*
+     * This does 3 things 1) makes sure that inline enums are unique per operation
+     * by appending opName to the enum name 2) Solves a bug where if we have a
+     * container of enum, the "allowableValues" property doesn't get passed down to
+     * the "items" property 3) provides defaultValueWithEnum as a vendor ext which
+     * gives full information about the default value, including its name
+     */
+    private void fixEnumParam(String opName, IJsonSchemaValidationProperties param) {
         CodegenProperty items;
         CodegenProperty mostInnerItems;
         boolean isEnum;
@@ -294,7 +299,7 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
         String enumName;
         Map<String, Object> vendorExt;
         if (param instanceof CodegenParameter) {
-            final CodegenParameter castedParam = (CodegenParameter)param;
+            final CodegenParameter castedParam = (CodegenParameter) param;
             allowableValues = castedParam.allowableValues;
             isEnum = castedParam.isEnum;
             isContainer = castedParam.isContainer;
@@ -304,7 +309,7 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
             mostInnerItems = castedParam.mostInnerItems;
             items = castedParam.items;
         } else if (param instanceof CodegenProperty) {
-            final CodegenProperty castedParam = (CodegenProperty)param;
+            final CodegenProperty castedParam = (CodegenProperty) param;
             allowableValues = castedParam.allowableValues;
             isEnum = castedParam.isEnum;
             isContainer = castedParam.isContainer;
@@ -313,20 +318,19 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
             enumName = castedParam.enumName;
             mostInnerItems = castedParam.mostInnerItems;
             items = castedParam.items;
-        }
-        else {
+        } else {
             return;
         }
         if (isEnum) {
-            if (param instanceof CodegenParameter) { 
-                final CodegenParameter castedParam = (CodegenParameter)param;
+            if (param instanceof CodegenParameter) {
+                final CodegenParameter castedParam = (CodegenParameter) param;
                 if (!castedParam.enumName.contains(opName)) {
-                    enumName = castedParam.enumName += opName;                    
+                    enumName = castedParam.enumName += opName;
                 }
             } else {
-                final CodegenProperty castedParam = (CodegenProperty)param;
+                final CodegenProperty castedParam = (CodegenProperty) param;
                 if (!castedParam.enumName.contains(opName)) {
-                    enumName = castedParam.enumName += opName;                    
+                    enumName = castedParam.enumName += opName;
                 }
             }
             if (isContainer) {
@@ -337,20 +341,16 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                 }
                 if (mostInnerItems != null) {
                     mostInnerItems.setAllowableValues(allowableValues);
-                    mostInnerItems.enumName = enumName; 
+                    mostInnerItems.enumName = enumName;
                     fixEnumParam(opName, mostInnerItems);
                 }
-                
+
             } else {
                 if (!StringUtils.isEmpty(defaultValue)) {
                     final List<Object> enumVars = (List<Object>) allowableValues.get("enumVars");
-                    
-                    Map<String,Object> defaultEnumVar = enumVars
-                        .stream()
-                        .map(enumVar -> (Map<String,Object>)enumVar)
-                        .filter(enumVar -> enumVar.get("value").equals(defaultValue))
-                        .findFirst()
-                        .orElse(null);
+
+                    Map<String, Object> defaultEnumVar = enumVars.stream().map(enumVar -> (Map<String, Object>) enumVar)
+                            .filter(enumVar -> enumVar.get("value").equals(defaultValue)).findFirst().orElse(null);
                     vendorExt.put("defaultValueWithEnum", defaultEnumVar);
                 }
             }
@@ -359,14 +359,16 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                 if (items != null) {
                     fixEnumParam(opName, items);
                 }
-                if (mostInnerItems != null){
+                if (mostInnerItems != null) {
                     fixEnumParam(opName, mostInnerItems);
                 }
             }
         }
-      
+
     }
-    /// A workaround for https://github.com/OpenAPITools/openapi-generator/issues/10189
+
+    /// A workaround for
+    /// https://github.com/OpenAPITools/openapi-generator/issues/10189
     private void fixOperationParam(String opName, CodegenParameter param) {
         if (param.isContainer) {
             if (param.isArray) {
@@ -379,11 +381,12 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                 param.baseType = typeMapping.get("map");
             }
         }
-        fixEnumParam(opName, param);        
+        fixEnumParam(opName, param);
     }
 
-    /// A workaround for https://github.com/OpenAPITools/openapi-generator/issues/10189
-    private void fixOperationResponse(CodegenResponse response) {        
+    /// A workaround for
+    /// https://github.com/OpenAPITools/openapi-generator/issues/10189
+    private void fixOperationResponse(CodegenResponse response) {
         if (response.isContainer) {
             if (response.isArray) {
                 if (response.getUniqueItems()) {
@@ -393,50 +396,53 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
                 }
             } else if (response.isMap) {
                 response.baseType = typeMapping.get("map");
-            }    
-        }        
+            }
+        }
     }
-    private Map<String,Object> getCodegenParameterTypeData(CodegenParameter param) {
+
+    private Map<String, Object> getCodegenParameterTypeData(CodegenParameter param) {
         final Map<String, Object> typeData = new HashMap<>();
-        
+
         typeData.put("isArray", param.getIsArray());
         typeData.put("uniqueItems", param.getUniqueItems());
         typeData.put("isMap", param.getIsMap());
         typeData.put("isContainer", param.isContainer);
-        typeData.put("baseType", param.baseType);        
+        typeData.put("baseType", param.baseType);
         if (param.items != null) {
             typeData.put("items", param.items);
         }
         return typeData;
     }
-    private Map<String,Object> getCodegenResponseTypeData(CodegenResponse r) {
+
+    private Map<String, Object> getCodegenResponseTypeData(CodegenResponse r) {
         final Map<String, Object> typeData = new HashMap<>();
-        
+
         typeData.put("isArray", r.getIsArray());
         typeData.put("uniqueItems", r.getUniqueItems());
         typeData.put("isMap", r.getIsMap());
         typeData.put("isContainer", r.isContainer);
-        typeData.put("baseType", r.baseType);        
+        typeData.put("baseType", r.baseType);
         if (r.items != null) {
             typeData.put("items", r.items);
         }
         return typeData;
     }
 
-    //Extracts inline enums to put them later in an "inlineEnums" property for each api
+    // Extracts inline enums to put them later in an "inlineEnums" property for each
+    // api
     private void extractInlineEnums(IJsonSchemaValidationProperties property, Map<String, Object> inlineEnums) {
         if (property instanceof CodegenProperty) {
             final CodegenProperty casted = (CodegenProperty) property;
             if (casted.isEnum) {
                 if (!inlineEnums.containsKey(casted.enumName)) {
-                    inlineEnums.put(casted.enumName, casted);                 
+                    inlineEnums.put(casted.enumName, casted);
                 }
             }
         } else if (property instanceof CodegenParameter) {
             final CodegenParameter casted = (CodegenParameter) property;
             if (casted.isEnum) {
                 if (!inlineEnums.containsKey(casted.enumName)) {
-                    inlineEnums.put(casted.enumName, casted);                 
+                    inlineEnums.put(casted.enumName, casted);
                 }
             }
         }
@@ -449,6 +455,7 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
             }
         }
     }
+
     @Override
     public Map<String, Object> postProcessOperationsWithModels(Map<String, Object> objs, List<Object> allModels) {
         super.postProcessOperationsWithModels(objs, allModels);
@@ -458,32 +465,26 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
         Set<Map<String, Object>> serializers = new HashSet<>();
         Map<String, Object> inlineEnums = new HashMap<>();
         Set<String> resultImports = new HashSet<>();
-        for (CodegenOperation op : operationList) {            
-            List<CodegenParameter> actualAllParams = Stream.of(
-                op.allParams,
-                op.bodyParams,
-                op.pathParams,
-                op.queryParams,
-                op.headerParams,
-                op.formParams,                
-                op.cookieParams,
-                op.requiredParams,
-                op.optionalParams).flatMap(Collection::stream).collect(Collectors.toList());
+        for (CodegenOperation op : operationList) {
+            List<CodegenParameter> actualAllParams = Stream
+                    .of(op.allParams, op.bodyParams, op.pathParams, op.queryParams, op.headerParams, op.formParams,
+                            op.cookieParams, op.requiredParams, op.optionalParams)
+                    .flatMap(Collection::stream).collect(Collectors.toList());
             if (op.bodyParam != null) {
                 actualAllParams.add(op.bodyParam);
             }
             for (CodegenParameter param : actualAllParams) {
-                fixOperationParam(op.operationId, param);  
-                if (param.isContainer && !(param.isBinary || param.isFile)) {                    
+                fixOperationParam(op.operationId, param);
+                if (param.isContainer && !(param.isBinary || param.isFile)) {
                     serializers.add(getCodegenParameterTypeData(param));
                 }
                 extractInlineEnums(param, inlineEnums);
             }
             for (CodegenResponse response : op.responses) {
                 fixOperationResponse(response);
-                if (response.isContainer && !(response.isBinary || response.isFile)) {                    
+                if (response.isContainer && !(response.isBinary || response.isFile)) {
                     serializers.add(getCodegenResponseTypeData(response));
-                }                
+                }
             }
             resultImports.addAll(rewriteImports(op.imports, false));
             if (op.getHasFormParams() || op.getHasQueryParams()) {
@@ -491,7 +492,10 @@ public class DartDioNextClientCodegen extends AbstractDartCodegen {
             }
         }
         if (!inlineEnums.isEmpty()) {
-            resultImports.add("package:built_value/built_value.dart");
+            if (additionalProperties.get("useBuiltValue") == "true") {
+                resultImports.add("package:built_value/built_value.dart");
+                resultImports.add("package:built_collection/built_collection.dart");
+            }
         }
         objs.put("imports", resultImports.stream().sorted().collect(Collectors.toList()));
         objs.put("serializers", serializers);
