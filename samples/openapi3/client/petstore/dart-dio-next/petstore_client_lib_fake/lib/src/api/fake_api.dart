@@ -21,7 +21,6 @@ import 'package:openapi/src/model/user.dart';
 part 'fake_api.g.dart';
 
 class FakeApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -29,7 +28,7 @@ class FakeApi {
   const FakeApi(this._dio, this._serializers);
 
   /// Health check endpoint
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -41,7 +40,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [HealthCheckResult] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<HealthCheckResult>> fakeHealthGet({ 
+  Future<Response<HealthCheckResult>> fakeHealthGet({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -78,7 +77,6 @@ class FakeApi {
         _response.data!,
         specifiedType: _responseType,
       ) as HealthCheckResult;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -101,7 +99,7 @@ class FakeApi {
   }
 
   /// test http signature authentication
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [pet] - Pet object that needs to be added to the store
@@ -116,7 +114,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> fakeHttpSignatureTest({ 
+  Future<Response<void>> fakeHttpSignatureTest({
     required Pet pet,
     String? query1,
     String? header1,
@@ -149,7 +147,9 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (query1 != null) r'query_1': encodeQueryParameter(_serializers, query1, const FullType(String)),
+      if (query1 != null)
+        r'query_1':
+            encodeQueryParameter(_serializers, query1, const FullType(String)),
     };
 
     dynamic _bodyData;
@@ -157,10 +157,9 @@ class FakeApi {
     try {
       const _type = FullType(Pet);
       _bodyData = _serializers.serialize(pet, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -197,7 +196,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [bool] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<bool>> fakeOuterBooleanSerialize({ 
+  Future<Response<bool>> fakeOuterBooleanSerialize({
     bool? body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -224,10 +223,9 @@ class FakeApi {
 
     try {
       _bodyData = body;
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -249,7 +247,6 @@ class FakeApi {
 
     try {
       _responseData = _response.data as bool;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -285,7 +282,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [OuterComposite] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OuterComposite>> fakeOuterCompositeSerialize({ 
+  Future<Response<OuterComposite>> fakeOuterCompositeSerialize({
     OuterComposite? outerComposite,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -312,11 +309,12 @@ class FakeApi {
 
     try {
       const _type = FullType(OuterComposite);
-      _bodyData = outerComposite == null ? null : _serializers.serialize(outerComposite, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = outerComposite == null
+          ? null
+          : _serializers.serialize(outerComposite, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -342,7 +340,6 @@ class FakeApi {
         _response.data!,
         specifiedType: _responseType,
       ) as OuterComposite;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -378,7 +375,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [num] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<num>> fakeOuterNumberSerialize({ 
+  Future<Response<num>> fakeOuterNumberSerialize({
     num? body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -405,10 +402,9 @@ class FakeApi {
 
     try {
       _bodyData = body;
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -430,7 +426,6 @@ class FakeApi {
 
     try {
       _responseData = _response.data as num;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -466,7 +461,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<String>> fakeOuterStringSerialize({ 
+  Future<Response<String>> fakeOuterStringSerialize({
     String? body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -493,10 +488,9 @@ class FakeApi {
 
     try {
       _bodyData = body;
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -518,7 +512,6 @@ class FakeApi {
 
     try {
       _responseData = _response.data as String;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -554,7 +547,8 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [OuterObjectWithEnumProperty] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OuterObjectWithEnumProperty>> fakePropertyEnumIntegerSerialize({ 
+  Future<Response<OuterObjectWithEnumProperty>>
+      fakePropertyEnumIntegerSerialize({
     required OuterObjectWithEnumProperty outerObjectWithEnumProperty,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -581,11 +575,11 @@ class FakeApi {
 
     try {
       const _type = FullType(OuterObjectWithEnumProperty);
-      _bodyData = _serializers.serialize(outerObjectWithEnumProperty, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(outerObjectWithEnumProperty,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -611,7 +605,6 @@ class FakeApi {
         _response.data!,
         specifiedType: _responseType,
       ) as OuterObjectWithEnumProperty;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -647,7 +640,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testBodyWithBinary({ 
+  Future<Response<void>> testBodyWithBinary({
     MultipartFile? body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -674,10 +667,9 @@ class FakeApi {
 
     try {
       _bodyData = body?.finalize();
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -702,7 +694,7 @@ class FakeApi {
   /// For this test, the body for this request must reference a schema named &#x60;File&#x60;.
   ///
   /// Parameters:
-  /// * [fileSchemaTestClass] 
+  /// * [fileSchemaTestClass]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -712,7 +704,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testBodyWithFileSchema({ 
+  Future<Response<void>> testBodyWithFileSchema({
     required FileSchemaTestClass fileSchemaTestClass,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -739,11 +731,11 @@ class FakeApi {
 
     try {
       const _type = FullType(FileSchemaTestClass);
-      _bodyData = _serializers.serialize(fileSchemaTestClass, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(fileSchemaTestClass, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -765,11 +757,11 @@ class FakeApi {
   }
 
   /// testBodyWithQueryParams
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [query] 
-  /// * [user] 
+  /// * [query]
+  /// * [user]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -779,7 +771,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testBodyWithQueryParams({ 
+  Future<Response<void>> testBodyWithQueryParams({
     required String query,
     required User user,
     CancelToken? cancelToken,
@@ -804,7 +796,8 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
+      r'query':
+          encodeQueryParameter(_serializers, query, const FullType(String)),
     };
 
     dynamic _bodyData;
@@ -812,10 +805,9 @@ class FakeApi {
     try {
       const _type = FullType(User);
       _bodyData = _serializers.serialize(user, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -852,7 +844,7 @@ class FakeApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ModelClient] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<ModelClient>> testClientModel({ 
+  Future<Response<ModelClient>> testClientModel({
     required ModelClient modelClient,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -880,10 +872,9 @@ class FakeApi {
     try {
       const _type = FullType(ModelClient);
       _bodyData = _serializers.serialize(modelClient, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -909,7 +900,6 @@ class FakeApi {
         _response.data!,
         specifiedType: _responseType,
       ) as ModelClient;
-
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
@@ -931,8 +921,8 @@ class FakeApi {
     );
   }
 
-  /// Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
-  /// Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트 
+  /// Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트
+  /// Fake endpoint for testing various parameters 假端點 偽のエンドポイント 가짜 엔드 포인트
   ///
   /// Parameters:
   /// * [number] - None
@@ -958,7 +948,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testEndpointParameters({ 
+  Future<Response<void>> testEndpointParameters({
     required num number,
     required double double_,
     required String patternWithoutDelimiter,
@@ -1004,25 +994,48 @@ class FakeApi {
 
     try {
       _bodyData = <String, dynamic>{
-        if (integer != null) r'integer': encodeQueryParameter(_serializers, integer, const FullType(int)),
-        if (int32 != null) r'int32': encodeQueryParameter(_serializers, int32, const FullType(int)),
-        if (int64 != null) r'int64': encodeQueryParameter(_serializers, int64, const FullType(int)),
-        r'number': encodeQueryParameter(_serializers, number, const FullType(num)),
-        if (float != null) r'float': encodeQueryParameter(_serializers, float, const FullType(double)),
-        r'double': encodeQueryParameter(_serializers, double_, const FullType(double)),
-        if (string != null) r'string': encodeQueryParameter(_serializers, string, const FullType(String)),
-        r'pattern_without_delimiter': encodeQueryParameter(_serializers, patternWithoutDelimiter, const FullType(String)),
-        r'byte': encodeQueryParameter(_serializers, byte, const FullType(String)),
-        if (binary != null) r'binary': encodeQueryParameter(_serializers, binary, const FullType(MultipartFile)),
-        if (date != null) r'date': encodeQueryParameter(_serializers, date, const FullType(Date)),
-        if (dateTime != null) r'dateTime': encodeQueryParameter(_serializers, dateTime, const FullType(DateTime)),
-        if (password != null) r'password': encodeQueryParameter(_serializers, password, const FullType(String)),
-        if (callback != null) r'callback': encodeQueryParameter(_serializers, callback, const FullType(String)),
+        if (integer != null)
+          r'integer':
+              encodeQueryParameter(_serializers, integer, const FullType(int)),
+        if (int32 != null)
+          r'int32':
+              encodeQueryParameter(_serializers, int32, const FullType(int)),
+        if (int64 != null)
+          r'int64':
+              encodeQueryParameter(_serializers, int64, const FullType(int)),
+        r'number':
+            encodeQueryParameter(_serializers, number, const FullType(num)),
+        if (float != null)
+          r'float':
+              encodeQueryParameter(_serializers, float, const FullType(double)),
+        r'double':
+            encodeQueryParameter(_serializers, double_, const FullType(double)),
+        if (string != null)
+          r'string': encodeQueryParameter(
+              _serializers, string, const FullType(String)),
+        r'pattern_without_delimiter': encodeQueryParameter(
+            _serializers, patternWithoutDelimiter, const FullType(String)),
+        r'byte':
+            encodeQueryParameter(_serializers, byte, const FullType(String)),
+        if (binary != null)
+          r'binary': encodeQueryParameter(
+              _serializers, binary, const FullType(MultipartFile)),
+        if (date != null)
+          r'date':
+              encodeQueryParameter(_serializers, date, const FullType(Date)),
+        if (dateTime != null)
+          r'dateTime': encodeQueryParameter(
+              _serializers, dateTime, const FullType(DateTime)),
+        if (password != null)
+          r'password': encodeQueryParameter(
+              _serializers, password, const FullType(String)),
+        if (callback != null)
+          r'callback': encodeQueryParameter(
+              _serializers, callback, const FullType(String)),
       };
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1064,11 +1077,14 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testEnumParameters({ 
-    BuiltList<EnumHeaderStringArrayEnumtestEnumParameters>? enumHeaderStringArray,
-    EnumHeaderStringEnumtestEnumParameters? enumHeaderString = EnumHeaderStringEnumtestEnumParameters.efg,
+  Future<Response<void>> testEnumParameters({
+    BuiltList<EnumHeaderStringArrayEnumtestEnumParameters>?
+        enumHeaderStringArray,
+    EnumHeaderStringEnumtestEnumParameters? enumHeaderString =
+        EnumHeaderStringEnumtestEnumParameters.efg,
     BuiltList<EnumQueryStringArrayEnumtestEnumParameters>? enumQueryStringArray,
-    EnumQueryStringEnumtestEnumParameters? enumQueryString = EnumQueryStringEnumtestEnumParameters.efg,
+    EnumQueryStringEnumtestEnumParameters? enumQueryString =
+        EnumQueryStringEnumtestEnumParameters.efg,
     EnumQueryIntegerEnumtestEnumParameters? enumQueryInteger,
     EnumQueryDoubleEnumtestEnumParameters? enumQueryDouble,
     BuiltList<EnumFormStringArrayEnumtestEnumParameters>? enumFormStringArray,
@@ -1084,7 +1100,8 @@ class FakeApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
-        if (enumHeaderStringArray != null) r'enum_header_string_array': enumHeaderStringArray,
+        if (enumHeaderStringArray != null)
+          r'enum_header_string_array': enumHeaderStringArray,
         if (enumHeaderString != null) r'enum_header_string': enumHeaderString,
         ...?headers,
       },
@@ -1097,23 +1114,54 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (enumQueryStringArray != null) r'enum_query_string_array': encodeCollectionQueryParameter<EnumQueryStringArrayEnumtestEnumParameters>(_serializers, enumQueryStringArray, const FullType(BuiltList, [FullType(EnumQueryStringArrayEnumtestEnumParameters)]), format: ListFormat.multi,),
-      if (enumQueryString != null) r'enum_query_string': encodeQueryParameter(_serializers, enumQueryString, const FullType(EnumQueryStringEnumtestEnumParameters)),
-      if (enumQueryInteger != null) r'enum_query_integer': encodeQueryParameter(_serializers, enumQueryInteger, const FullType(EnumQueryIntegerEnumtestEnumParameters)),
-      if (enumQueryDouble != null) r'enum_query_double': encodeQueryParameter(_serializers, enumQueryDouble, const FullType(EnumQueryDoubleEnumtestEnumParameters)),
+      if (enumQueryStringArray != null)
+        r'enum_query_string_array': encodeCollectionQueryParameter<
+            EnumQueryStringArrayEnumtestEnumParameters>(
+          _serializers,
+          enumQueryStringArray,
+          const FullType(BuiltList,
+              [FullType(EnumQueryStringArrayEnumtestEnumParameters)]),
+          format: ListFormat.multi,
+        ),
+      if (enumQueryString != null)
+        r'enum_query_string': encodeQueryParameter(
+            _serializers,
+            enumQueryString,
+            const FullType(EnumQueryStringEnumtestEnumParameters)),
+      if (enumQueryInteger != null)
+        r'enum_query_integer': encodeQueryParameter(
+            _serializers,
+            enumQueryInteger,
+            const FullType(EnumQueryIntegerEnumtestEnumParameters)),
+      if (enumQueryDouble != null)
+        r'enum_query_double': encodeQueryParameter(
+            _serializers,
+            enumQueryDouble,
+            const FullType(EnumQueryDoubleEnumtestEnumParameters)),
     };
 
     dynamic _bodyData;
 
     try {
       _bodyData = <String, dynamic>{
-        if (enumFormStringArray != null) r'enum_form_string_array': encodeCollectionQueryParameter<EnumFormStringArrayEnumtestEnumParameters>(_serializers, enumFormStringArray, const FullType(BuiltList, [FullType(EnumFormStringArrayEnumtestEnumParameters)]), format: ListFormat.csv,),
-        if (enumFormString != null) r'enum_form_string': encodeQueryParameter(_serializers, enumFormString, const FullType(EnumFormStringEnumtestEnumParameters)),
+        if (enumFormStringArray != null)
+          r'enum_form_string_array': encodeCollectionQueryParameter<
+              EnumFormStringArrayEnumtestEnumParameters>(
+            _serializers,
+            enumFormStringArray,
+            const FullType(BuiltList,
+                [FullType(EnumFormStringArrayEnumtestEnumParameters)]),
+            format: ListFormat.csv,
+          ),
+        if (enumFormString != null)
+          r'enum_form_string': encodeQueryParameter(
+              _serializers,
+              enumFormString,
+              const FullType(EnumFormStringEnumtestEnumParameters)),
       };
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -1155,7 +1203,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testGroupParameters({ 
+  Future<Response<void>> testGroupParameters({
     required int requiredStringGroup,
     required bool requiredBooleanGroup,
     required int requiredInt64Group,
@@ -1191,10 +1239,16 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'required_string_group': encodeQueryParameter(_serializers, requiredStringGroup, const FullType(int)),
-      r'required_int64_group': encodeQueryParameter(_serializers, requiredInt64Group, const FullType(int)),
-      if (stringGroup != null) r'string_group': encodeQueryParameter(_serializers, stringGroup, const FullType(int)),
-      if (int64Group != null) r'int64_group': encodeQueryParameter(_serializers, int64Group, const FullType(int)),
+      r'required_string_group': encodeQueryParameter(
+          _serializers, requiredStringGroup, const FullType(int)),
+      r'required_int64_group': encodeQueryParameter(
+          _serializers, requiredInt64Group, const FullType(int)),
+      if (stringGroup != null)
+        r'string_group': encodeQueryParameter(
+            _serializers, stringGroup, const FullType(int)),
+      if (int64Group != null)
+        r'int64_group':
+            encodeQueryParameter(_serializers, int64Group, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1210,7 +1264,7 @@ class FakeApi {
   }
 
   /// test inline additionalProperties
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [requestBody] - request body
@@ -1223,7 +1277,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testInlineAdditionalProperties({ 
+  Future<Response<void>> testInlineAdditionalProperties({
     required BuiltMap<String, String> requestBody,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1251,10 +1305,9 @@ class FakeApi {
     try {
       const _type = FullType(BuiltMap, [FullType(String), FullType(String)]);
       _bodyData = _serializers.serialize(requestBody, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1276,7 +1329,7 @@ class FakeApi {
   }
 
   /// test json serialization of form data
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [param] - field1
@@ -1290,7 +1343,7 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testJsonFormData({ 
+  Future<Response<void>> testJsonFormData({
     required String param,
     required String param2,
     CancelToken? cancelToken,
@@ -1318,13 +1371,14 @@ class FakeApi {
 
     try {
       _bodyData = <String, dynamic>{
-        r'param': encodeQueryParameter(_serializers, param, const FullType(String)),
-        r'param2': encodeQueryParameter(_serializers, param2, const FullType(String)),
+        r'param':
+            encodeQueryParameter(_serializers, param, const FullType(String)),
+        r'param2':
+            encodeQueryParameter(_serializers, param2, const FullType(String)),
       };
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioError(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -1349,12 +1403,13 @@ class FakeApi {
   /// To test the collection format in query parameters
   ///
   /// Parameters:
-  /// * [pipe] 
-  /// * [ioutil] 
-  /// * [http] 
-  /// * [url] 
-  /// * [context] 
-  /// * [language] 
+  /// * [pipe]
+  /// * [ioutil]
+  /// * [http]
+  /// * [url]
+  /// * [context]
+  /// * [allowEmpty]
+  /// * [language]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1364,12 +1419,13 @@ class FakeApi {
   ///
   /// Returns a [Future]
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testQueryParameterCollectionFormat({ 
+  Future<Response<void>> testQueryParameterCollectionFormat({
     required BuiltList<String> pipe,
     required BuiltList<String> ioutil,
     required BuiltList<String> http,
     required BuiltList<String> url,
     required BuiltList<String> context,
+    required String allowEmpty,
     BuiltMap<String, String>? language,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1378,7 +1434,7 @@ class FakeApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/fake/test-query-paramters';
+    final _path = r'/fake/test-query-parameters';
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -1392,12 +1448,44 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'pipe': encodeCollectionQueryParameter<String>(_serializers, pipe, const FullType(BuiltList, [FullType(String)]), format: ListFormat.pipes,),
-      r'ioutil': encodeCollectionQueryParameter<String>(_serializers, ioutil, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
-      r'http': encodeCollectionQueryParameter<String>(_serializers, http, const FullType(BuiltList, [FullType(String)]), format: ListFormat.ssv,),
-      r'url': encodeCollectionQueryParameter<String>(_serializers, url, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
-      r'context': encodeCollectionQueryParameter<String>(_serializers, context, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
-      if (language != null) r'language': encodeQueryParameter(_serializers, language, const FullType(BuiltMap, [FullType(String), FullType(String)])),
+      r'pipe': encodeCollectionQueryParameter<String>(
+        _serializers,
+        pipe,
+        const FullType(BuiltList, [FullType(String)]),
+        format: ListFormat.pipes,
+      ),
+      r'ioutil': encodeCollectionQueryParameter<String>(
+        _serializers,
+        ioutil,
+        const FullType(BuiltList, [FullType(String)]),
+        format: ListFormat.csv,
+      ),
+      r'http': encodeCollectionQueryParameter<String>(
+        _serializers,
+        http,
+        const FullType(BuiltList, [FullType(String)]),
+        format: ListFormat.ssv,
+      ),
+      r'url': encodeCollectionQueryParameter<String>(
+        _serializers,
+        url,
+        const FullType(BuiltList, [FullType(String)]),
+        format: ListFormat.csv,
+      ),
+      r'context': encodeCollectionQueryParameter<String>(
+        _serializers,
+        context,
+        const FullType(BuiltList, [FullType(String)]),
+        format: ListFormat.multi,
+      ),
+      if (language != null)
+        r'language': encodeQueryParameter(
+          _serializers,
+          language,
+          const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        ),
+      r'allowEmpty': encodeQueryParameter(
+          _serializers, allowEmpty, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -1411,142 +1499,199 @@ class FakeApi {
 
     return _response;
   }
-
 }
-class EnumFormStringEnumtestEnumParameters extends EnumClass {
 
+class EnumFormStringEnumtestEnumParameters extends EnumClass {
   /// Form parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'_abc')
-  static const EnumFormStringEnumtestEnumParameters abc = _$enumFormStringEnumtestEnumParameters_abc;
+  static const EnumFormStringEnumtestEnumParameters abc =
+      _$enumFormStringEnumtestEnumParameters_abc;
+
   /// Form parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'-efg')
-  static const EnumFormStringEnumtestEnumParameters efg = _$enumFormStringEnumtestEnumParameters_efg;
+  static const EnumFormStringEnumtestEnumParameters efg =
+      _$enumFormStringEnumtestEnumParameters_efg;
+
   /// Form parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'(xyz)')
-  static const EnumFormStringEnumtestEnumParameters leftParenthesisXyzRightParenthesis = _$enumFormStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
+  static const EnumFormStringEnumtestEnumParameters
+      leftParenthesisXyzRightParenthesis =
+      _$enumFormStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
 
-  static Serializer<EnumFormStringEnumtestEnumParameters> get serializer => _$enumFormStringEnumtestEnumParametersSerializer;
+  static Serializer<EnumFormStringEnumtestEnumParameters> get serializer =>
+      _$enumFormStringEnumtestEnumParametersSerializer;
 
-  const EnumFormStringEnumtestEnumParameters._(String name): super(name);
+  const EnumFormStringEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumFormStringEnumtestEnumParameters> get values => _$enumFormStringEnumtestEnumParametersValues;
-  static EnumFormStringEnumtestEnumParameters valueOf(String name) => _$enumFormStringEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumFormStringEnumtestEnumParameters> get values =>
+      _$enumFormStringEnumtestEnumParametersValues;
+  static EnumFormStringEnumtestEnumParameters valueOf(String name) =>
+      _$enumFormStringEnumtestEnumParametersValueOf(name);
 }
+
 class EnumHeaderStringArrayEnumtestEnumParameters extends EnumClass {
-
   /// Header parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'>')
-  static const EnumHeaderStringArrayEnumtestEnumParameters greaterThan = _$enumHeaderStringArrayEnumtestEnumParameters_greaterThan;
+  static const EnumHeaderStringArrayEnumtestEnumParameters greaterThan =
+      _$enumHeaderStringArrayEnumtestEnumParameters_greaterThan;
+
   /// Header parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'$')
-  static const EnumHeaderStringArrayEnumtestEnumParameters dollar = _$enumHeaderStringArrayEnumtestEnumParameters_dollar;
+  static const EnumHeaderStringArrayEnumtestEnumParameters dollar =
+      _$enumHeaderStringArrayEnumtestEnumParameters_dollar;
 
-  static Serializer<EnumHeaderStringArrayEnumtestEnumParameters> get serializer => _$enumHeaderStringArrayEnumtestEnumParametersSerializer;
+  static Serializer<EnumHeaderStringArrayEnumtestEnumParameters>
+      get serializer => _$enumHeaderStringArrayEnumtestEnumParametersSerializer;
 
-  const EnumHeaderStringArrayEnumtestEnumParameters._(String name): super(name);
+  const EnumHeaderStringArrayEnumtestEnumParameters._(String name)
+      : super(name);
 
-  static BuiltSet<EnumHeaderStringArrayEnumtestEnumParameters> get values => _$enumHeaderStringArrayEnumtestEnumParametersValues;
-  static EnumHeaderStringArrayEnumtestEnumParameters valueOf(String name) => _$enumHeaderStringArrayEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumHeaderStringArrayEnumtestEnumParameters> get values =>
+      _$enumHeaderStringArrayEnumtestEnumParametersValues;
+  static EnumHeaderStringArrayEnumtestEnumParameters valueOf(String name) =>
+      _$enumHeaderStringArrayEnumtestEnumParametersValueOf(name);
 }
+
 class EnumQueryStringArrayEnumtestEnumParameters extends EnumClass {
-
   /// Query parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'>')
-  static const EnumQueryStringArrayEnumtestEnumParameters greaterThan = _$enumQueryStringArrayEnumtestEnumParameters_greaterThan;
+  static const EnumQueryStringArrayEnumtestEnumParameters greaterThan =
+      _$enumQueryStringArrayEnumtestEnumParameters_greaterThan;
+
   /// Query parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'$')
-  static const EnumQueryStringArrayEnumtestEnumParameters dollar = _$enumQueryStringArrayEnumtestEnumParameters_dollar;
+  static const EnumQueryStringArrayEnumtestEnumParameters dollar =
+      _$enumQueryStringArrayEnumtestEnumParameters_dollar;
 
-  static Serializer<EnumQueryStringArrayEnumtestEnumParameters> get serializer => _$enumQueryStringArrayEnumtestEnumParametersSerializer;
+  static Serializer<EnumQueryStringArrayEnumtestEnumParameters>
+      get serializer => _$enumQueryStringArrayEnumtestEnumParametersSerializer;
 
-  const EnumQueryStringArrayEnumtestEnumParameters._(String name): super(name);
+  const EnumQueryStringArrayEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumQueryStringArrayEnumtestEnumParameters> get values => _$enumQueryStringArrayEnumtestEnumParametersValues;
-  static EnumQueryStringArrayEnumtestEnumParameters valueOf(String name) => _$enumQueryStringArrayEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumQueryStringArrayEnumtestEnumParameters> get values =>
+      _$enumQueryStringArrayEnumtestEnumParametersValues;
+  static EnumQueryStringArrayEnumtestEnumParameters valueOf(String name) =>
+      _$enumQueryStringArrayEnumtestEnumParametersValueOf(name);
 }
-class EnumQueryIntegerEnumtestEnumParameters extends EnumClass {
 
+class EnumQueryIntegerEnumtestEnumParameters extends EnumClass {
   /// Query parameter enum test (double)
   @BuiltValueEnumConst(wireNumber: 1)
-  static const EnumQueryIntegerEnumtestEnumParameters number1 = _$enumQueryIntegerEnumtestEnumParameters_number1;
+  static const EnumQueryIntegerEnumtestEnumParameters number1 =
+      _$enumQueryIntegerEnumtestEnumParameters_number1;
+
   /// Query parameter enum test (double)
   @BuiltValueEnumConst(wireNumber: -2)
-  static const EnumQueryIntegerEnumtestEnumParameters numberNegative2 = _$enumQueryIntegerEnumtestEnumParameters_numberNegative2;
+  static const EnumQueryIntegerEnumtestEnumParameters numberNegative2 =
+      _$enumQueryIntegerEnumtestEnumParameters_numberNegative2;
 
-  static Serializer<EnumQueryIntegerEnumtestEnumParameters> get serializer => _$enumQueryIntegerEnumtestEnumParametersSerializer;
+  static Serializer<EnumQueryIntegerEnumtestEnumParameters> get serializer =>
+      _$enumQueryIntegerEnumtestEnumParametersSerializer;
 
-  const EnumQueryIntegerEnumtestEnumParameters._(String name): super(name);
+  const EnumQueryIntegerEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumQueryIntegerEnumtestEnumParameters> get values => _$enumQueryIntegerEnumtestEnumParametersValues;
-  static EnumQueryIntegerEnumtestEnumParameters valueOf(String name) => _$enumQueryIntegerEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumQueryIntegerEnumtestEnumParameters> get values =>
+      _$enumQueryIntegerEnumtestEnumParametersValues;
+  static EnumQueryIntegerEnumtestEnumParameters valueOf(String name) =>
+      _$enumQueryIntegerEnumtestEnumParametersValueOf(name);
 }
-class EnumFormStringArrayEnumtestEnumParameters extends EnumClass {
 
+class EnumFormStringArrayEnumtestEnumParameters extends EnumClass {
   /// Form parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'>')
-  static const EnumFormStringArrayEnumtestEnumParameters greaterThan = _$enumFormStringArrayEnumtestEnumParameters_greaterThan;
+  static const EnumFormStringArrayEnumtestEnumParameters greaterThan =
+      _$enumFormStringArrayEnumtestEnumParameters_greaterThan;
+
   /// Form parameter enum test (string array)
   @BuiltValueEnumConst(wireName: r'$')
-  static const EnumFormStringArrayEnumtestEnumParameters dollar = _$enumFormStringArrayEnumtestEnumParameters_dollar;
+  static const EnumFormStringArrayEnumtestEnumParameters dollar =
+      _$enumFormStringArrayEnumtestEnumParameters_dollar;
 
-  static Serializer<EnumFormStringArrayEnumtestEnumParameters> get serializer => _$enumFormStringArrayEnumtestEnumParametersSerializer;
+  static Serializer<EnumFormStringArrayEnumtestEnumParameters> get serializer =>
+      _$enumFormStringArrayEnumtestEnumParametersSerializer;
 
-  const EnumFormStringArrayEnumtestEnumParameters._(String name): super(name);
+  const EnumFormStringArrayEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumFormStringArrayEnumtestEnumParameters> get values => _$enumFormStringArrayEnumtestEnumParametersValues;
-  static EnumFormStringArrayEnumtestEnumParameters valueOf(String name) => _$enumFormStringArrayEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumFormStringArrayEnumtestEnumParameters> get values =>
+      _$enumFormStringArrayEnumtestEnumParametersValues;
+  static EnumFormStringArrayEnumtestEnumParameters valueOf(String name) =>
+      _$enumFormStringArrayEnumtestEnumParametersValueOf(name);
 }
-class EnumHeaderStringEnumtestEnumParameters extends EnumClass {
 
+class EnumHeaderStringEnumtestEnumParameters extends EnumClass {
   /// Header parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'_abc')
-  static const EnumHeaderStringEnumtestEnumParameters abc = _$enumHeaderStringEnumtestEnumParameters_abc;
+  static const EnumHeaderStringEnumtestEnumParameters abc =
+      _$enumHeaderStringEnumtestEnumParameters_abc;
+
   /// Header parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'-efg')
-  static const EnumHeaderStringEnumtestEnumParameters efg = _$enumHeaderStringEnumtestEnumParameters_efg;
+  static const EnumHeaderStringEnumtestEnumParameters efg =
+      _$enumHeaderStringEnumtestEnumParameters_efg;
+
   /// Header parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'(xyz)')
-  static const EnumHeaderStringEnumtestEnumParameters leftParenthesisXyzRightParenthesis = _$enumHeaderStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
+  static const EnumHeaderStringEnumtestEnumParameters
+      leftParenthesisXyzRightParenthesis =
+      _$enumHeaderStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
 
-  static Serializer<EnumHeaderStringEnumtestEnumParameters> get serializer => _$enumHeaderStringEnumtestEnumParametersSerializer;
+  static Serializer<EnumHeaderStringEnumtestEnumParameters> get serializer =>
+      _$enumHeaderStringEnumtestEnumParametersSerializer;
 
-  const EnumHeaderStringEnumtestEnumParameters._(String name): super(name);
+  const EnumHeaderStringEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumHeaderStringEnumtestEnumParameters> get values => _$enumHeaderStringEnumtestEnumParametersValues;
-  static EnumHeaderStringEnumtestEnumParameters valueOf(String name) => _$enumHeaderStringEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumHeaderStringEnumtestEnumParameters> get values =>
+      _$enumHeaderStringEnumtestEnumParametersValues;
+  static EnumHeaderStringEnumtestEnumParameters valueOf(String name) =>
+      _$enumHeaderStringEnumtestEnumParametersValueOf(name);
 }
-class EnumQueryDoubleEnumtestEnumParameters extends EnumClass {
 
+class EnumQueryDoubleEnumtestEnumParameters extends EnumClass {
   /// Query parameter enum test (double)
   @BuiltValueEnumConst(wireName: r'1.1')
-  static const EnumQueryDoubleEnumtestEnumParameters number1Period1 = _$enumQueryDoubleEnumtestEnumParameters_number1Period1;
+  static const EnumQueryDoubleEnumtestEnumParameters number1Period1 =
+      _$enumQueryDoubleEnumtestEnumParameters_number1Period1;
+
   /// Query parameter enum test (double)
   @BuiltValueEnumConst(wireName: r'-1.2')
-  static const EnumQueryDoubleEnumtestEnumParameters numberNegative1Period2 = _$enumQueryDoubleEnumtestEnumParameters_numberNegative1Period2;
+  static const EnumQueryDoubleEnumtestEnumParameters numberNegative1Period2 =
+      _$enumQueryDoubleEnumtestEnumParameters_numberNegative1Period2;
 
-  static Serializer<EnumQueryDoubleEnumtestEnumParameters> get serializer => _$enumQueryDoubleEnumtestEnumParametersSerializer;
+  static Serializer<EnumQueryDoubleEnumtestEnumParameters> get serializer =>
+      _$enumQueryDoubleEnumtestEnumParametersSerializer;
 
-  const EnumQueryDoubleEnumtestEnumParameters._(String name): super(name);
+  const EnumQueryDoubleEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumQueryDoubleEnumtestEnumParameters> get values => _$enumQueryDoubleEnumtestEnumParametersValues;
-  static EnumQueryDoubleEnumtestEnumParameters valueOf(String name) => _$enumQueryDoubleEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumQueryDoubleEnumtestEnumParameters> get values =>
+      _$enumQueryDoubleEnumtestEnumParametersValues;
+  static EnumQueryDoubleEnumtestEnumParameters valueOf(String name) =>
+      _$enumQueryDoubleEnumtestEnumParametersValueOf(name);
 }
-class EnumQueryStringEnumtestEnumParameters extends EnumClass {
 
+class EnumQueryStringEnumtestEnumParameters extends EnumClass {
   /// Query parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'_abc')
-  static const EnumQueryStringEnumtestEnumParameters abc = _$enumQueryStringEnumtestEnumParameters_abc;
+  static const EnumQueryStringEnumtestEnumParameters abc =
+      _$enumQueryStringEnumtestEnumParameters_abc;
+
   /// Query parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'-efg')
-  static const EnumQueryStringEnumtestEnumParameters efg = _$enumQueryStringEnumtestEnumParameters_efg;
+  static const EnumQueryStringEnumtestEnumParameters efg =
+      _$enumQueryStringEnumtestEnumParameters_efg;
+
   /// Query parameter enum test (string)
   @BuiltValueEnumConst(wireName: r'(xyz)')
-  static const EnumQueryStringEnumtestEnumParameters leftParenthesisXyzRightParenthesis = _$enumQueryStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
+  static const EnumQueryStringEnumtestEnumParameters
+      leftParenthesisXyzRightParenthesis =
+      _$enumQueryStringEnumtestEnumParameters_leftParenthesisXyzRightParenthesis;
 
-  static Serializer<EnumQueryStringEnumtestEnumParameters> get serializer => _$enumQueryStringEnumtestEnumParametersSerializer;
+  static Serializer<EnumQueryStringEnumtestEnumParameters> get serializer =>
+      _$enumQueryStringEnumtestEnumParametersSerializer;
 
-  const EnumQueryStringEnumtestEnumParameters._(String name): super(name);
+  const EnumQueryStringEnumtestEnumParameters._(String name) : super(name);
 
-  static BuiltSet<EnumQueryStringEnumtestEnumParameters> get values => _$enumQueryStringEnumtestEnumParametersValues;
-  static EnumQueryStringEnumtestEnumParameters valueOf(String name) => _$enumQueryStringEnumtestEnumParametersValueOf(name);
+  static BuiltSet<EnumQueryStringEnumtestEnumParameters> get values =>
+      _$enumQueryStringEnumtestEnumParametersValues;
+  static EnumQueryStringEnumtestEnumParameters valueOf(String name) =>
+      _$enumQueryStringEnumtestEnumParametersValueOf(name);
 }
