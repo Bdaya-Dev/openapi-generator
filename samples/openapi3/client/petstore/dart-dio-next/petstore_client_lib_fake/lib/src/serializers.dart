@@ -122,28 +122,36 @@ part 'serializers.g.dart';
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
-        const FullType(BuiltMap, [FullType(String), FullType(String)]),
-        () => MapBuilder<String, String>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltMap, [FullType(String), FullType(String)]),
-        () => MapBuilder<String, String>(),
-      )
-      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(EnumQueryStringArrayEnumtestEnumParameters)]),
-        () => ListBuilder<EnumQueryStringArrayEnumtestEnumParameters>(),
+        const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        () => MapBuilder<String, String>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(EnumHeaderStringArrayEnumtestEnumParameters)]),
         () => ListBuilder<EnumHeaderStringArrayEnumtestEnumParameters>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(EnumQueryStringArrayEnumtestEnumParameters)]),
+        () => ListBuilder<EnumQueryStringArrayEnumtestEnumParameters>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(EnumFormStringArrayEnumtestEnumParameters)]),
         () => ListBuilder<EnumFormStringArrayEnumtestEnumParameters>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        () => MapBuilder<String, String>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(StatusEnumfindPetsByStatus)]),
+        () => ListBuilder<StatusEnumfindPetsByStatus>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Pet)]),
+        () => ListBuilder<Pet>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltSet, [FullType(String)]),
@@ -152,14 +160,6 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltSet, [FullType(Pet)]),
         () => SetBuilder<Pet>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(Pet)]),
-        () => ListBuilder<Pet>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(StatusEnumfindPetsByStatus)]),
-        () => ListBuilder<StatusEnumfindPetsByStatus>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltMap, [FullType(String), FullType(int)]),

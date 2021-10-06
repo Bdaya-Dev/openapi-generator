@@ -58,6 +58,8 @@ import 'package:openapi/src/model/read_only_first.dart';
 import 'package:openapi/src/model/special_model_name.dart';
 import 'package:openapi/src/model/tag.dart';
 import 'package:openapi/src/model/user.dart';
+import 'package:openapi/src/api/fake_api.dart';
+import 'package:openapi/src/api/pet_api.dart';
 
 part 'serializers.g.dart';
 
@@ -108,6 +110,15 @@ part 'serializers.g.dart';
   SpecialModelName,
   Tag,
   User,
+  EnumFormStringEnumtestEnumParameters,
+  EnumHeaderStringArrayEnumtestEnumParameters,
+  EnumQueryStringArrayEnumtestEnumParameters,
+  EnumQueryIntegerEnumtestEnumParameters,
+  EnumFormStringArrayEnumtestEnumParameters,
+  EnumHeaderStringEnumtestEnumParameters,
+  EnumQueryDoubleEnumtestEnumParameters,
+  EnumQueryStringEnumtestEnumParameters,
+  StatusEnumfindPetsByStatus,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -119,20 +130,36 @@ Serializers serializers = (_$serializers.toBuilder()
         () => MapBuilder<String, String>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(String)]),
-        () => ListBuilder<String>(),
+        const FullType(BuiltList, [FullType(EnumHeaderStringArrayEnumtestEnumParameters)]),
+        () => ListBuilder<EnumHeaderStringArrayEnumtestEnumParameters>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltSet, [FullType(Pet)]),
-        () => SetBuilder<Pet>(),
+        const FullType(BuiltList, [FullType(EnumQueryStringArrayEnumtestEnumParameters)]),
+        () => ListBuilder<EnumQueryStringArrayEnumtestEnumParameters>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(EnumFormStringArrayEnumtestEnumParameters)]),
+        () => ListBuilder<EnumFormStringArrayEnumtestEnumParameters>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltMap, [FullType(String), FullType(String)]),
+        () => MapBuilder<String, String>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(StatusEnumfindPetsByStatus)]),
+        () => ListBuilder<StatusEnumfindPetsByStatus>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Pet)]),
+        () => ListBuilder<Pet>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltSet, [FullType(String)]),
         () => SetBuilder<String>(),
       )
       ..addBuilderFactory(
-        const FullType(BuiltList, [FullType(Pet)]),
-        () => ListBuilder<Pet>(),
+        const FullType(BuiltSet, [FullType(Pet)]),
+        () => SetBuilder<Pet>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltMap, [FullType(String), FullType(int)]),

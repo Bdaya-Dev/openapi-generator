@@ -143,7 +143,7 @@ public abstract class AbstractDartCodegen extends DefaultCodegen {
         typeMapping.put("date", "DateTime");
         typeMapping.put("DateTime", "DateTime");
         typeMapping.put("file", "MultipartFile");
-        typeMapping.put("binary", "MultipartFile");
+        typeMapping.put("binary", "Uint8List");
         typeMapping.put("UUID", "String");
         typeMapping.put("URI", "String");
         typeMapping.put("ByteArray", "String");

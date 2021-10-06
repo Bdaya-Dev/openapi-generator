@@ -791,13 +791,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pipe** | [**BuiltList&lt;String&gt;**](String.md)|  | 
- **ioutil** | [**BuiltList&lt;String&gt;**](String.md)|  | 
- **http** | [**BuiltList&lt;String&gt;**](String.md)|  | 
- **url** | [**BuiltList&lt;String&gt;**](String.md)|  | 
- **context** | [**BuiltList&lt;String&gt;**](String.md)|  | 
+ **pipe** | [**BuiltList&lt;String&gt;**](BuiltList.md)|  | 
+ **ioutil** | [**BuiltList&lt;String&gt;**](BuiltList.md)|  | 
+ **http** | [**BuiltList&lt;String&gt;**](BuiltList.md)|  | 
+ **url** | [**BuiltList&lt;String&gt;**](BuiltList.md)|  | 
+ **context** | [**BuiltList&lt;String&gt;**](BuiltList.md)|  | 
  **allowEmpty** | **String**|  | 
- **language** | [**BuiltMap&lt;String, String&gt;**](String.md)|  | [optional] 
+ **language** | [**BuiltMap&lt;String, String&gt;**](BuiltMap.md)|  | [optional] 
 
 ### Return type
 

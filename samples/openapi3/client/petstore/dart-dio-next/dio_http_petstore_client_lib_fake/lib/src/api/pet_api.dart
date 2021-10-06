@@ -8,9 +8,11 @@ import 'package:built_value/serializer.dart';
 import 'package:dio_http/dio_http.dart';
 
 import 'package:built_collection/built_collection.dart';
+import 'package:built_value/built_value.dart';
 import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/api_response.dart';
 import 'package:openapi/src/model/pet.dart';
+part 'pet_api.g.dart';
 
 class PetApi {
 
@@ -161,7 +163,7 @@ class PetApi {
   /// Returns a [Future] containing a [Response] with a [BuiltList<Pet>] as data
   /// Throws [DioError] if API call or serialization fails
   Future<Response<BuiltList<Pet>>> findPetsByStatus({ 
-    required BuiltList<String> status,
+    required BuiltList<StatusEnumfindPetsByStatus> status,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -188,7 +190,7 @@ class PetApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'status': encodeCollectionQueryParameter<String>(_serializers, status, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+      r'status': encodeCollectionQueryParameter<StatusEnumfindPetsByStatus>(_serializers, status, const FullType(BuiltList, [FullType(StatusEnumfindPetsByStatus)]), format: ListFormat.csv,),
     };
 
     final _response = await _dio.request<Object>(
@@ -228,6 +230,7 @@ class PetApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+
   }
 
   /// Finds Pets by tags
@@ -313,6 +316,7 @@ class PetApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+
   }
 
   /// Find pet by ID
@@ -394,6 +398,8 @@ class PetApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+
+
   }
 
   /// Update an existing pet
@@ -752,4 +758,23 @@ class PetApi {
     );
   }
 
+}
+class StatusEnumfindPetsByStatus extends EnumClass {
+
+  /// Status values that need to be considered for filter
+  @BuiltValueEnumConst(wireName: r'available')
+  static const StatusEnumfindPetsByStatus available = _$statusEnumfindPetsByStatus_available;
+  /// Status values that need to be considered for filter
+  @BuiltValueEnumConst(wireName: r'pending')
+  static const StatusEnumfindPetsByStatus pending = _$statusEnumfindPetsByStatus_pending;
+  /// Status values that need to be considered for filter
+  @BuiltValueEnumConst(wireName: r'sold')
+  static const StatusEnumfindPetsByStatus sold = _$statusEnumfindPetsByStatus_sold;
+
+  static Serializer<StatusEnumfindPetsByStatus> get serializer => _$statusEnumfindPetsByStatusSerializer;
+
+  const StatusEnumfindPetsByStatus._(String name): super(name);
+
+  static BuiltSet<StatusEnumfindPetsByStatus> get values => _$statusEnumfindPetsByStatusValues;
+  static StatusEnumfindPetsByStatus valueOf(String name) => _$statusEnumfindPetsByStatusValueOf(name);
 }
