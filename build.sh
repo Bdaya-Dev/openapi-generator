@@ -1,1 +1,1 @@
-./mvnw -Dmaven.javadoc.skip=true clean install
+./mvnw clean install
