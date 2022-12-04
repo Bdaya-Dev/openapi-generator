@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -19,6 +20,10 @@ part 'user.g.dart';
 /// * [password] 
 /// * [phone] 
 /// * [userStatus] - User Status
+/// * [objectWithNoDeclaredProps] - test code generation for objects Value must be a map of strings to values. It cannot be the 'null' value.
+/// * [objectWithNoDeclaredPropsNullable] - test code generation for nullable objects. Value must be a map of strings to values or the 'null' value.
+/// * [anyTypeProp] - test code generation for any type Here the 'type' attribute is not specified, which means the value can be anything, including the null value, string, number, boolean, array or object. See https://github.com/OAI/OpenAPI-Specification/issues/1389
+/// * [anyTypePropNullable] - test code generation for any type Here the 'type' attribute is not specified, which means the value can be anything, including the null value, string, number, boolean, array or object. The 'nullable' attribute does not change the allowed values.
 @BuiltValue()
 abstract class User implements Built<User, UserBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -45,6 +50,22 @@ abstract class User implements Built<User, UserBuilder> {
   /// User Status
   @BuiltValueField(wireName: r'userStatus')
   int? get userStatus;
+
+  /// test code generation for objects Value must be a map of strings to values. It cannot be the 'null' value.
+  @BuiltValueField(wireName: r'objectWithNoDeclaredProps')
+  JsonObject? get objectWithNoDeclaredProps;
+
+  /// test code generation for nullable objects. Value must be a map of strings to values or the 'null' value.
+  @BuiltValueField(wireName: r'objectWithNoDeclaredPropsNullable')
+  JsonObject? get objectWithNoDeclaredPropsNullable;
+
+  /// test code generation for any type Here the 'type' attribute is not specified, which means the value can be anything, including the null value, string, number, boolean, array or object. See https://github.com/OAI/OpenAPI-Specification/issues/1389
+  @BuiltValueField(wireName: r'anyTypeProp')
+  JsonObject? get anyTypeProp;
+
+  /// test code generation for any type Here the 'type' attribute is not specified, which means the value can be anything, including the null value, string, number, boolean, array or object. The 'nullable' attribute does not change the allowed values.
+  @BuiltValueField(wireName: r'anyTypePropNullable')
+  JsonObject? get anyTypePropNullable;
 
   User._();
 
@@ -125,6 +146,34 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
         specifiedType: const FullType(int),
       );
     }
+    if (object.objectWithNoDeclaredProps != null) {
+      yield r'objectWithNoDeclaredProps';
+      yield serializers.serialize(
+        object.objectWithNoDeclaredProps,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.objectWithNoDeclaredPropsNullable != null) {
+      yield r'objectWithNoDeclaredPropsNullable';
+      yield serializers.serialize(
+        object.objectWithNoDeclaredPropsNullable,
+        specifiedType: const FullType.nullable(JsonObject),
+      );
+    }
+    if (object.anyTypeProp != null) {
+      yield r'anyTypeProp';
+      yield serializers.serialize(
+        object.anyTypeProp,
+        specifiedType: const FullType.nullable(JsonObject),
+      );
+    }
+    if (object.anyTypePropNullable != null) {
+      yield r'anyTypePropNullable';
+      yield serializers.serialize(
+        object.anyTypePropNullable,
+        specifiedType: const FullType.nullable(JsonObject),
+      );
+    }
   }
 
   @override
@@ -203,6 +252,37 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
             specifiedType: const FullType(int),
           ) as int;
           result.userStatus = valueDes;
+          break;
+        case r'objectWithNoDeclaredProps':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.objectWithNoDeclaredProps = valueDes;
+          break;
+        case r'objectWithNoDeclaredPropsNullable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
+          result.objectWithNoDeclaredPropsNullable = valueDes;
+          break;
+        case r'anyTypeProp':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
+          result.anyTypeProp = valueDes;
+          break;
+        case r'anyTypePropNullable':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(JsonObject),
+          ) as JsonObject?;
+          if (valueDes == null) continue;
+          result.anyTypePropNullable = valueDes;
           break;
         default:
           unhandled.add(key);

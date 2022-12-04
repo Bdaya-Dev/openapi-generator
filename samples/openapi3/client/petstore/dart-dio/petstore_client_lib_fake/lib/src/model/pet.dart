@@ -32,7 +32,7 @@ abstract class Pet implements Built<Pet, PetBuilder> {
   String get name;
 
   @BuiltValueField(wireName: r'photoUrls')
-  BuiltSet<String> get photoUrls;
+  BuiltList<String> get photoUrls;
 
   @BuiltValueField(wireName: r'tags')
   BuiltList<Tag>? get tags;
@@ -87,7 +87,7 @@ class _$PetSerializer implements PrimitiveSerializer<Pet> {
     yield r'photoUrls';
     yield serializers.serialize(
       object.photoUrls,
-      specifiedType: const FullType(BuiltSet, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
     if (object.tags != null) {
       yield r'tags';
@@ -150,8 +150,8 @@ class _$PetSerializer implements PrimitiveSerializer<Pet> {
         case r'photoUrls':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltSet, [FullType(String)]),
-          ) as BuiltSet<String>;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
           result.photoUrls.replace(valueDes);
           break;
         case r'tags':

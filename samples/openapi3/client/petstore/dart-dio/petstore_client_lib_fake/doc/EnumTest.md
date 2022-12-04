@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **enumString** | **String** |  | [optional] 
 **enumStringRequired** | **String** |  | 
 **enumInteger** | **int** |  | [optional] 
+**enumIntegerOnly** | **int** |  | [optional] 
 **enumNumber** | **double** |  | [optional] 
 **outerEnum** | [**OuterEnum**](OuterEnum.md) |  | [optional] 
 **outerEnumInteger** | [**OuterEnumInteger**](OuterEnumInteger.md) |  | [optional] 

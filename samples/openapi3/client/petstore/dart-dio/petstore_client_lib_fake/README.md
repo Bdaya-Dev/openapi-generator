@@ -67,13 +67,11 @@ Class | Method | HTTP request | Description
 [*AnotherFakeApi*](doc/AnotherFakeApi.md) | [**call123testSpecialTags**](doc/AnotherFakeApi.md#call123testspecialtags) | **PATCH** /another-fake/dummy | To test special tags
 [*DefaultApi*](doc/DefaultApi.md) | [**fooGet**](doc/DefaultApi.md#fooget) | **GET** /foo | 
 [*FakeApi*](doc/FakeApi.md) | [**fakeHealthGet**](doc/FakeApi.md#fakehealthget) | **GET** /fake/health | Health check endpoint
-[*FakeApi*](doc/FakeApi.md) | [**fakeHttpSignatureTest**](doc/FakeApi.md#fakehttpsignaturetest) | **GET** /fake/http-signature-test | test http signature authentication
 [*FakeApi*](doc/FakeApi.md) | [**fakeOuterBooleanSerialize**](doc/FakeApi.md#fakeouterbooleanserialize) | **POST** /fake/outer/boolean | 
 [*FakeApi*](doc/FakeApi.md) | [**fakeOuterCompositeSerialize**](doc/FakeApi.md#fakeoutercompositeserialize) | **POST** /fake/outer/composite | 
 [*FakeApi*](doc/FakeApi.md) | [**fakeOuterNumberSerialize**](doc/FakeApi.md#fakeouternumberserialize) | **POST** /fake/outer/number | 
 [*FakeApi*](doc/FakeApi.md) | [**fakeOuterStringSerialize**](doc/FakeApi.md#fakeouterstringserialize) | **POST** /fake/outer/string | 
-[*FakeApi*](doc/FakeApi.md) | [**fakePropertyEnumIntegerSerialize**](doc/FakeApi.md#fakepropertyenumintegerserialize) | **POST** /fake/property/enum-int | 
-[*FakeApi*](doc/FakeApi.md) | [**testBodyWithBinary**](doc/FakeApi.md#testbodywithbinary) | **PUT** /fake/body-with-binary | 
+[*FakeApi*](doc/FakeApi.md) | [**getArrayOfEnums**](doc/FakeApi.md#getarrayofenums) | **GET** /fake/array-of-enums | Array of Enums
 [*FakeApi*](doc/FakeApi.md) | [**testBodyWithFileSchema**](doc/FakeApi.md#testbodywithfileschema) | **PUT** /fake/body-with-file-schema | 
 [*FakeApi*](doc/FakeApi.md) | [**testBodyWithQueryParams**](doc/FakeApi.md#testbodywithqueryparams) | **PUT** /fake/body-with-query-params | 
 [*FakeApi*](doc/FakeApi.md) | [**testClientModel**](doc/FakeApi.md#testclientmodel) | **PATCH** /fake | To test \&quot;client\&quot; model
@@ -109,29 +107,47 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Activity](doc/Activity.md)
+ - [ActivityOutputElementRepresentation](doc/ActivityOutputElementRepresentation.md)
  - [AdditionalPropertiesClass](doc/AdditionalPropertiesClass.md)
- - [AllOfWithSingleRef](doc/AllOfWithSingleRef.md)
  - [Animal](doc/Animal.md)
  - [ApiResponse](doc/ApiResponse.md)
+ - [Apple](doc/Apple.md)
+ - [AppleReq](doc/AppleReq.md)
  - [ArrayOfArrayOfNumberOnly](doc/ArrayOfArrayOfNumberOnly.md)
  - [ArrayOfNumberOnly](doc/ArrayOfNumberOnly.md)
  - [ArrayTest](doc/ArrayTest.md)
+ - [Banana](doc/Banana.md)
+ - [BananaReq](doc/BananaReq.md)
+ - [BasquePig](doc/BasquePig.md)
  - [Capitalization](doc/Capitalization.md)
  - [Cat](doc/Cat.md)
  - [CatAllOf](doc/CatAllOf.md)
  - [Category](doc/Category.md)
+ - [ChildCat](doc/ChildCat.md)
+ - [ChildCatAllOf](doc/ChildCatAllOf.md)
  - [ClassModel](doc/ClassModel.md)
+ - [ComplexQuadrilateral](doc/ComplexQuadrilateral.md)
+ - [DanishPig](doc/DanishPig.md)
  - [DeprecatedObject](doc/DeprecatedObject.md)
  - [Dog](doc/Dog.md)
  - [DogAllOf](doc/DogAllOf.md)
+ - [Drawing](doc/Drawing.md)
  - [EnumArrays](doc/EnumArrays.md)
  - [EnumTest](doc/EnumTest.md)
+ - [EquilateralTriangle](doc/EquilateralTriangle.md)
  - [FileSchemaTestClass](doc/FileSchemaTestClass.md)
  - [Foo](doc/Foo.md)
  - [FooGetDefaultResponse](doc/FooGetDefaultResponse.md)
  - [FormatTest](doc/FormatTest.md)
+ - [Fruit](doc/Fruit.md)
+ - [FruitReq](doc/FruitReq.md)
+ - [GmFruit](doc/GmFruit.md)
+ - [GrandparentAnimal](doc/GrandparentAnimal.md)
  - [HasOnlyReadOnly](doc/HasOnlyReadOnly.md)
  - [HealthCheckResult](doc/HealthCheckResult.md)
+ - [IsoscelesTriangle](doc/IsoscelesTriangle.md)
+ - [Mammal](doc/Mammal.md)
  - [MapTest](doc/MapTest.md)
  - [MixedPropertiesAndAdditionalPropertiesClass](doc/MixedPropertiesAndAdditionalPropertiesClass.md)
  - [Model200Response](doc/Model200Response.md)
@@ -142,6 +158,7 @@ Class | Method | HTTP request | Description
  - [ModelReturn](doc/ModelReturn.md)
  - [Name](doc/Name.md)
  - [NullableClass](doc/NullableClass.md)
+ - [NullableShape](doc/NullableShape.md)
  - [NumberOnly](doc/NumberOnly.md)
  - [ObjectWithDeprecatedFields](doc/ObjectWithDeprecatedFields.md)
  - [Order](doc/Order.md)
@@ -150,13 +167,25 @@ Class | Method | HTTP request | Description
  - [OuterEnumDefaultValue](doc/OuterEnumDefaultValue.md)
  - [OuterEnumInteger](doc/OuterEnumInteger.md)
  - [OuterEnumIntegerDefaultValue](doc/OuterEnumIntegerDefaultValue.md)
- - [OuterObjectWithEnumProperty](doc/OuterObjectWithEnumProperty.md)
+ - [ParentPet](doc/ParentPet.md)
  - [Pet](doc/Pet.md)
+ - [Pig](doc/Pig.md)
+ - [PolymorphicProperty](doc/PolymorphicProperty.md)
+ - [Quadrilateral](doc/Quadrilateral.md)
+ - [QuadrilateralInterface](doc/QuadrilateralInterface.md)
  - [ReadOnlyFirst](doc/ReadOnlyFirst.md)
- - [SingleRefType](doc/SingleRefType.md)
+ - [ScaleneTriangle](doc/ScaleneTriangle.md)
+ - [Shape](doc/Shape.md)
+ - [ShapeInterface](doc/ShapeInterface.md)
+ - [ShapeOrNull](doc/ShapeOrNull.md)
+ - [SimpleQuadrilateral](doc/SimpleQuadrilateral.md)
  - [SpecialModelName](doc/SpecialModelName.md)
  - [Tag](doc/Tag.md)
+ - [Triangle](doc/Triangle.md)
+ - [TriangleInterface](doc/TriangleInterface.md)
  - [User](doc/User.md)
+ - [Whale](doc/Whale.md)
+ - [Zebra](doc/Zebra.md)
 
 
 ## Documentation For Authorization

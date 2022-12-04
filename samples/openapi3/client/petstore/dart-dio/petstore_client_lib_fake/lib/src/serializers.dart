@@ -14,29 +14,47 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:openapi/src/date_serializer.dart';
 import 'package:openapi/src/model/date.dart';
 
+import 'package:openapi/src/model/activity.dart';
+import 'package:openapi/src/model/activity_output_element_representation.dart';
 import 'package:openapi/src/model/additional_properties_class.dart';
-import 'package:openapi/src/model/all_of_with_single_ref.dart';
 import 'package:openapi/src/model/animal.dart';
 import 'package:openapi/src/model/api_response.dart';
+import 'package:openapi/src/model/apple.dart';
+import 'package:openapi/src/model/apple_req.dart';
 import 'package:openapi/src/model/array_of_array_of_number_only.dart';
 import 'package:openapi/src/model/array_of_number_only.dart';
 import 'package:openapi/src/model/array_test.dart';
+import 'package:openapi/src/model/banana.dart';
+import 'package:openapi/src/model/banana_req.dart';
+import 'package:openapi/src/model/basque_pig.dart';
 import 'package:openapi/src/model/capitalization.dart';
 import 'package:openapi/src/model/cat.dart';
 import 'package:openapi/src/model/cat_all_of.dart';
 import 'package:openapi/src/model/category.dart';
+import 'package:openapi/src/model/child_cat.dart';
+import 'package:openapi/src/model/child_cat_all_of.dart';
 import 'package:openapi/src/model/class_model.dart';
+import 'package:openapi/src/model/complex_quadrilateral.dart';
+import 'package:openapi/src/model/danish_pig.dart';
 import 'package:openapi/src/model/deprecated_object.dart';
 import 'package:openapi/src/model/dog.dart';
 import 'package:openapi/src/model/dog_all_of.dart';
+import 'package:openapi/src/model/drawing.dart';
 import 'package:openapi/src/model/enum_arrays.dart';
 import 'package:openapi/src/model/enum_test.dart';
+import 'package:openapi/src/model/equilateral_triangle.dart';
 import 'package:openapi/src/model/file_schema_test_class.dart';
 import 'package:openapi/src/model/foo.dart';
 import 'package:openapi/src/model/foo_get_default_response.dart';
 import 'package:openapi/src/model/format_test.dart';
+import 'package:openapi/src/model/fruit.dart';
+import 'package:openapi/src/model/fruit_req.dart';
+import 'package:openapi/src/model/gm_fruit.dart';
+import 'package:openapi/src/model/grandparent_animal.dart';
 import 'package:openapi/src/model/has_only_read_only.dart';
 import 'package:openapi/src/model/health_check_result.dart';
+import 'package:openapi/src/model/isosceles_triangle.dart';
+import 'package:openapi/src/model/mammal.dart';
 import 'package:openapi/src/model/map_test.dart';
 import 'package:openapi/src/model/mixed_properties_and_additional_properties_class.dart';
 import 'package:openapi/src/model/model200_response.dart';
@@ -47,6 +65,7 @@ import 'package:openapi/src/model/model_list.dart';
 import 'package:openapi/src/model/model_return.dart';
 import 'package:openapi/src/model/name.dart';
 import 'package:openapi/src/model/nullable_class.dart';
+import 'package:openapi/src/model/nullable_shape.dart';
 import 'package:openapi/src/model/number_only.dart';
 import 'package:openapi/src/model/object_with_deprecated_fields.dart';
 import 'package:openapi/src/model/order.dart';
@@ -55,40 +74,70 @@ import 'package:openapi/src/model/outer_enum.dart';
 import 'package:openapi/src/model/outer_enum_default_value.dart';
 import 'package:openapi/src/model/outer_enum_integer.dart';
 import 'package:openapi/src/model/outer_enum_integer_default_value.dart';
-import 'package:openapi/src/model/outer_object_with_enum_property.dart';
+import 'package:openapi/src/model/parent_pet.dart';
 import 'package:openapi/src/model/pet.dart';
+import 'package:openapi/src/model/pig.dart';
+import 'package:openapi/src/model/polymorphic_property.dart';
+import 'package:openapi/src/model/quadrilateral.dart';
+import 'package:openapi/src/model/quadrilateral_interface.dart';
 import 'package:openapi/src/model/read_only_first.dart';
-import 'package:openapi/src/model/single_ref_type.dart';
+import 'package:openapi/src/model/scalene_triangle.dart';
+import 'package:openapi/src/model/shape.dart';
+import 'package:openapi/src/model/shape_interface.dart';
+import 'package:openapi/src/model/shape_or_null.dart';
+import 'package:openapi/src/model/simple_quadrilateral.dart';
 import 'package:openapi/src/model/special_model_name.dart';
 import 'package:openapi/src/model/tag.dart';
+import 'package:openapi/src/model/triangle.dart';
+import 'package:openapi/src/model/triangle_interface.dart';
 import 'package:openapi/src/model/user.dart';
+import 'package:openapi/src/model/whale.dart';
+import 'package:openapi/src/model/zebra.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
+  Activity,
+  ActivityOutputElementRepresentation,
   AdditionalPropertiesClass,
-  AllOfWithSingleRef,
   Animal,$Animal,
   ApiResponse,
+  Apple,
+  AppleReq,
   ArrayOfArrayOfNumberOnly,
   ArrayOfNumberOnly,
   ArrayTest,
+  Banana,
+  BananaReq,
+  BasquePig,
   Capitalization,
   Cat,
   CatAllOf,$CatAllOf,
   Category,
+  ChildCat,
+  ChildCatAllOf,$ChildCatAllOf,
   ClassModel,
+  ComplexQuadrilateral,
+  DanishPig,
   DeprecatedObject,
   Dog,
   DogAllOf,$DogAllOf,
+  Drawing,
   EnumArrays,
   EnumTest,
+  EquilateralTriangle,
   FileSchemaTestClass,
   Foo,
   FooGetDefaultResponse,
   FormatTest,
+  Fruit,
+  FruitReq,
+  GmFruit,
+  GrandparentAnimal,$GrandparentAnimal,
   HasOnlyReadOnly,
   HealthCheckResult,
+  IsoscelesTriangle,
+  Mammal,
   MapTest,
   MixedPropertiesAndAdditionalPropertiesClass,
   Model200Response,
@@ -99,6 +148,7 @@ part 'serializers.g.dart';
   ModelReturn,
   Name,
   NullableClass,
+  NullableShape,
   NumberOnly,
   ObjectWithDeprecatedFields,
   Order,
@@ -107,13 +157,25 @@ part 'serializers.g.dart';
   OuterEnumDefaultValue,
   OuterEnumInteger,
   OuterEnumIntegerDefaultValue,
-  OuterObjectWithEnumProperty,
+  ParentPet,$ParentPet,
   Pet,
+  Pig,
+  PolymorphicProperty,
+  Quadrilateral,
+  QuadrilateralInterface,$QuadrilateralInterface,
   ReadOnlyFirst,
-  SingleRefType,
+  ScaleneTriangle,
+  Shape,
+  ShapeInterface,$ShapeInterface,
+  ShapeOrNull,
+  SimpleQuadrilateral,
   SpecialModelName,
   Tag,
+  Triangle,
+  TriangleInterface,$TriangleInterface,
   User,
+  Whale,
+  Zebra,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
@@ -123,14 +185,6 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(User)]),
         () => ListBuilder<User>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltSet, [FullType(String)]),
-        () => SetBuilder<String>(),
-      )
-      ..addBuilderFactory(
-        const FullType(BuiltSet, [FullType(Pet)]),
-        () => SetBuilder<Pet>(),
       )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Pet)]),
@@ -145,12 +199,22 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<ModelEnumClass>(),
       )
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(OuterEnum)]),
+        () => ListBuilder<OuterEnum>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),
       )
       ..add(Animal.serializer)
       ..add(CatAllOf.serializer)
+      ..add(ChildCatAllOf.serializer)
       ..add(DogAllOf.serializer)
+      ..add(GrandparentAnimal.serializer)
+      ..add(ParentPet.serializer)
+      ..add(QuadrilateralInterface.serializer)
+      ..add(ShapeInterface.serializer)
+      ..add(TriangleInterface.serializer)
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

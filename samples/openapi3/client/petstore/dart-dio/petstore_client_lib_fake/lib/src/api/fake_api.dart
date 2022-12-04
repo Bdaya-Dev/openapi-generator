@@ -16,8 +16,7 @@ import 'package:openapi/src/model/health_check_result.dart';
 import 'package:openapi/src/model/model_client.dart';
 import 'package:openapi/src/model/model_enum_class.dart';
 import 'package:openapi/src/model/outer_composite.dart';
-import 'package:openapi/src/model/outer_object_with_enum_property.dart';
-import 'package:openapi/src/model/pet.dart';
+import 'package:openapi/src/model/outer_enum.dart';
 import 'package:openapi/src/model/user.dart';
 
 class FakeApi {
@@ -98,89 +97,6 @@ class FakeApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
-  }
-
-  /// test http signature authentication
-  /// 
-  ///
-  /// Parameters:
-  /// * [pet] - Pet object that needs to be added to the store
-  /// * [query1] - query parameter
-  /// * [header1] - header parameter
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> fakeHttpSignatureTest({ 
-    required Pet pet,
-    String? query1,
-    String? header1,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/fake/http-signature-test';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (header1 != null) r'header_1': header1,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'signature',
-            'name': 'http_signature_test',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (query1 != null) r'query_1': encodeQueryParameter(_serializers, query1, const FullType(String)),
-    };
-
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(Pet);
-      _bodyData = _serializers.serialize(pet, specifiedType: _type);
-
-    } catch(error, stackTrace) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-          queryParameters: _queryParameters,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      )..stackTrace = stackTrace;
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
   }
 
   /// fakeOuterBooleanSerialize
@@ -540,11 +456,10 @@ class FakeApi {
     );
   }
 
-  /// fakePropertyEnumIntegerSerialize
-  /// Test serialization of enum (int) properties with examples
+  /// Array of Enums
+  /// 
   ///
   /// Parameters:
-  /// * [outerObjectWithEnumProperty] - Input enum (int) as post body
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -552,10 +467,9 @@ class FakeApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [OuterObjectWithEnumProperty] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<OuterEnum>] as data
   /// Throws [DioError] if API call or serialization fails
-  Future<Response<OuterObjectWithEnumProperty>> fakePropertyEnumIntegerSerialize({ 
-    required OuterObjectWithEnumProperty outerObjectWithEnumProperty,
+  Future<Response<BuiltList<OuterEnum>>> getArrayOfEnums({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -563,9 +477,9 @@ class FakeApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/fake/property/enum-int';
+    final _path = r'/fake/array-of-enums';
     final _options = Options(
-      method: r'POST',
+      method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
       },
@@ -573,44 +487,25 @@ class FakeApi {
         'secure': <Map<String, String>>[],
         ...?extra,
       },
-      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
-
-    try {
-      const _type = FullType(OuterObjectWithEnumProperty);
-      _bodyData = _serializers.serialize(outerObjectWithEnumProperty, specifiedType: _type);
-
-    } catch(error, stackTrace) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      )..stackTrace = stackTrace;
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    OuterObjectWithEnumProperty _responseData;
+    BuiltList<OuterEnum> _responseData;
 
     try {
-      const _responseType = FullType(OuterObjectWithEnumProperty);
+      const _responseType = FullType(BuiltList, [FullType(OuterEnum)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as OuterObjectWithEnumProperty;
+      ) as BuiltList<OuterEnum>;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -621,7 +516,7 @@ class FakeApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<OuterObjectWithEnumProperty>(
+    return Response<BuiltList<OuterEnum>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -633,73 +528,8 @@ class FakeApi {
     );
   }
 
-  /// testBodyWithBinary
-  /// For this test, the body has to be a binary file.
-  ///
-  /// Parameters:
-  /// * [body] - image to upload
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
-  Future<Response<void>> testBodyWithBinary({ 
-    MultipartFile? body,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/fake/body-with-binary';
-    final _options = Options(
-      method: r'PUT',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
-      contentType: 'image/png',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = body?.finalize();
-
-    } catch(error, stackTrace) {
-      throw DioError(
-         requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioErrorType.other,
-        error: error,
-      )..stackTrace = stackTrace;
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
-  }
-
   /// testBodyWithFileSchema
-  /// For this test, the body for this request must reference a schema named &#x60;File&#x60;.
+  /// For this test, the body for this request much reference a schema named &#x60;File&#x60;.
   ///
   /// Parameters:
   /// * [fileSchemaTestClass] 
@@ -1357,8 +1187,6 @@ class FakeApi {
   /// * [http] 
   /// * [url] 
   /// * [context] 
-  /// * [allowEmpty] 
-  /// * [language] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1374,8 +1202,6 @@ class FakeApi {
     required BuiltList<String> http,
     required BuiltList<String> url,
     required BuiltList<String> context,
-    required String allowEmpty,
-    BuiltMap<String, String>? language,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1397,13 +1223,11 @@ class FakeApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'pipe': encodeCollectionQueryParameter<String>(_serializers, pipe, const FullType(BuiltList, [FullType(String)]), format: ListFormat.pipes,),
+      r'pipe': encodeCollectionQueryParameter<String>(_serializers, pipe, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
       r'ioutil': encodeCollectionQueryParameter<String>(_serializers, ioutil, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
       r'http': encodeCollectionQueryParameter<String>(_serializers, http, const FullType(BuiltList, [FullType(String)]), format: ListFormat.ssv,),
       r'url': encodeCollectionQueryParameter<String>(_serializers, url, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
       r'context': encodeCollectionQueryParameter<String>(_serializers, context, const FullType(BuiltList, [FullType(String)]), format: ListFormat.multi,),
-      if (language != null) r'language': encodeQueryParameter(_serializers, language, const FullType(BuiltMap, [FullType(String), FullType(String)]), ),
-      r'allowEmpty': encodeQueryParameter(_serializers, allowEmpty, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

@@ -30,6 +30,9 @@ Add a new pet to the store
 ### Example
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: http_signature_test
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').password = 'YOUR_PASSWORD';
 // TODO Configure OAuth2 access token for authorization: petstore_auth
 //defaultApiClient.getAuthentication<OAuth>('petstore_auth').accessToken = 'YOUR_ACCESS_TOKEN';
 
@@ -55,7 +58,7 @@ void (empty response body)
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth)
+[http_signature_test](../README.md#http_signature_test), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP request headers
 
@@ -120,6 +123,9 @@ Multiple status values can be provided with comma separated strings
 ### Example
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: http_signature_test
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').password = 'YOUR_PASSWORD';
 // TODO Configure OAuth2 access token for authorization: petstore_auth
 //defaultApiClient.getAuthentication<OAuth>('petstore_auth').accessToken = 'YOUR_ACCESS_TOKEN';
 
@@ -146,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth)
+[http_signature_test](../README.md#http_signature_test), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP request headers
 
@@ -156,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **findPetsByTags**
-> BuiltSet<Pet> findPetsByTags(tags)
+> BuiltList<Pet> findPetsByTags(tags)
 
 Finds Pets by tags
 
@@ -165,11 +171,14 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 ### Example
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: http_signature_test
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').password = 'YOUR_PASSWORD';
 // TODO Configure OAuth2 access token for authorization: petstore_auth
 //defaultApiClient.getAuthentication<OAuth>('petstore_auth').accessToken = 'YOUR_ACCESS_TOKEN';
 
 final api = Openapi().getPetApi();
-final BuiltSet<String> tags = ; // BuiltSet<String> | Tags to filter by
+final BuiltList<String> tags = ; // BuiltList<String> | Tags to filter by
 
 try {
     final response = api.findPetsByTags(tags);
@@ -183,15 +192,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tags** | [**BuiltSet&lt;String&gt;**](String.md)| Tags to filter by | 
+ **tags** | [**BuiltList&lt;String&gt;**](String.md)| Tags to filter by | 
 
 ### Return type
 
-[**BuiltSet&lt;Pet&gt;**](Pet.md)
+[**BuiltList&lt;Pet&gt;**](Pet.md)
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth)
+[http_signature_test](../README.md#http_signature_test), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP request headers
 
@@ -257,6 +266,9 @@ Update an existing pet
 ### Example
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure HTTP basic authorization: http_signature_test
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').username = 'YOUR_USERNAME'
+//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').password = 'YOUR_PASSWORD';
 // TODO Configure OAuth2 access token for authorization: petstore_auth
 //defaultApiClient.getAuthentication<OAuth>('petstore_auth').accessToken = 'YOUR_ACCESS_TOKEN';
 
@@ -282,7 +294,7 @@ void (empty response body)
 
 ### Authorization
 
-[petstore_auth](../README.md#petstore_auth)
+[http_signature_test](../README.md#http_signature_test), [petstore_auth](../README.md#petstore_auth)
 
 ### HTTP request headers
 
@@ -433,7 +445,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+ - **Accept**: application/json, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

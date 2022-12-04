@@ -52,6 +52,10 @@ class PetApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'http',
+            'scheme': 'signature',
+            'name': 'http_signature_test',
+          },{
             'type': 'oauth2',
             'name': 'petstore_auth',
           },
@@ -178,6 +182,10 @@ class PetApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'http',
+            'scheme': 'signature',
+            'name': 'http_signature_test',
+          },{
             'type': 'oauth2',
             'name': 'petstore_auth',
           },
@@ -242,11 +250,11 @@ class PetApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltSet<Pet>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<Pet>] as data
   /// Throws [DioError] if API call or serialization fails
   @Deprecated('This operation has been deprecated')
-  Future<Response<BuiltSet<Pet>>> findPetsByTags({ 
-    required BuiltSet<String> tags,
+  Future<Response<BuiltList<Pet>>> findPetsByTags({ 
+    required BuiltList<String> tags,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -263,6 +271,10 @@ class PetApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'http',
+            'scheme': 'signature',
+            'name': 'http_signature_test',
+          },{
             'type': 'oauth2',
             'name': 'petstore_auth',
           },
@@ -273,7 +285,7 @@ class PetApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'tags': encodeCollectionQueryParameter<String>(_serializers, tags, const FullType(BuiltSet, [FullType(String)]), format: ListFormat.csv,),
+      r'tags': encodeCollectionQueryParameter<String>(_serializers, tags, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
     };
 
     final _response = await _dio.request<Object>(
@@ -285,14 +297,14 @@ class PetApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltSet<Pet> _responseData;
+    BuiltList<Pet> _responseData;
 
     try {
-      const _responseType = FullType(BuiltSet, [FullType(Pet)]);
+      const _responseType = FullType(BuiltList, [FullType(Pet)]);
       _responseData = _serializers.deserialize(
         _response.data!,
         specifiedType: _responseType,
-      ) as BuiltSet<Pet>;
+      ) as BuiltList<Pet>;
 
     } catch (error, stackTrace) {
       throw DioError(
@@ -303,7 +315,7 @@ class PetApi {
       )..stackTrace = stackTrace;
     }
 
-    return Response<BuiltSet<Pet>>(
+    return Response<BuiltList<Pet>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -428,6 +440,10 @@ class PetApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'http',
+            'scheme': 'signature',
+            'name': 'http_signature_test',
+          },{
             'type': 'oauth2',
             'name': 'petstore_auth',
           },

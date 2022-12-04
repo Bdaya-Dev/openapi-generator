@@ -73,7 +73,7 @@ Creates list of users with given input array
 import 'package:openapi/api.dart';
 
 final api = Openapi().getUserApi();
-final BuiltList<User> user = ; // BuiltList<User> | List of user object
+final BuiltList<User> user = [{"username":"foo"},{"username":"bar"}]; // BuiltList<User> | List of user object
 
 try {
     api.createUsersWithArrayInput(user);
@@ -115,7 +115,7 @@ Creates list of users with given input array
 import 'package:openapi/api.dart';
 
 final api = Openapi().getUserApi();
-final BuiltList<User> user = ; // BuiltList<User> | List of user object
+final BuiltList<User> user = [{"username":"foo"},{"username":"bar"}]; // BuiltList<User> | List of user object
 
 try {
     api.createUsersWithListInput(user);

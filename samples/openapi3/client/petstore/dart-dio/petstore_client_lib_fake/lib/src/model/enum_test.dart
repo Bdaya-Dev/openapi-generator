@@ -19,6 +19,7 @@ part 'enum_test.g.dart';
 /// * [enumString] 
 /// * [enumStringRequired] 
 /// * [enumInteger] 
+/// * [enumIntegerOnly] 
 /// * [enumNumber] 
 /// * [outerEnum] 
 /// * [outerEnumInteger] 
@@ -37,6 +38,10 @@ abstract class EnumTest implements Built<EnumTest, EnumTestBuilder> {
   @BuiltValueField(wireName: r'enum_integer')
   EnumTestEnumIntegerEnum? get enumInteger;
   // enum enumIntegerEnum {  1,  -1,  };
+
+  @BuiltValueField(wireName: r'enum_integer_only')
+  EnumTestEnumIntegerOnlyEnum? get enumIntegerOnly;
+  // enum enumIntegerOnlyEnum {  2,  -2,  };
 
   @BuiltValueField(wireName: r'enum_number')
   EnumTestEnumNumberEnum? get enumNumber;
@@ -98,6 +103,13 @@ class _$EnumTestSerializer implements PrimitiveSerializer<EnumTest> {
       yield serializers.serialize(
         object.enumInteger,
         specifiedType: const FullType(EnumTestEnumIntegerEnum),
+      );
+    }
+    if (object.enumIntegerOnly != null) {
+      yield r'enum_integer_only';
+      yield serializers.serialize(
+        object.enumIntegerOnly,
+        specifiedType: const FullType(EnumTestEnumIntegerOnlyEnum),
       );
     }
     if (object.enumNumber != null) {
@@ -178,6 +190,13 @@ class _$EnumTestSerializer implements PrimitiveSerializer<EnumTest> {
             specifiedType: const FullType(EnumTestEnumIntegerEnum),
           ) as EnumTestEnumIntegerEnum;
           result.enumInteger = valueDes;
+          break;
+        case r'enum_integer_only':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(EnumTestEnumIntegerOnlyEnum),
+          ) as EnumTestEnumIntegerOnlyEnum;
+          result.enumIntegerOnly = valueDes;
           break;
         case r'enum_number':
           final valueDes = serializers.deserialize(
@@ -297,6 +316,23 @@ class EnumTestEnumIntegerEnum extends EnumClass {
 
   static BuiltSet<EnumTestEnumIntegerEnum> get values => _$enumTestEnumIntegerEnumValues;
   static EnumTestEnumIntegerEnum valueOf(String name) => _$enumTestEnumIntegerEnumValueOf(name);
+}
+
+class EnumTestEnumIntegerOnlyEnum extends EnumClass {
+
+  @BuiltValueEnumConst(wireNumber: 2)
+  static const EnumTestEnumIntegerOnlyEnum number2 = _$enumTestEnumIntegerOnlyEnum_number2;
+  @BuiltValueEnumConst(wireNumber: -2)
+  static const EnumTestEnumIntegerOnlyEnum numberNegative2 = _$enumTestEnumIntegerOnlyEnum_numberNegative2;
+  @BuiltValueEnumConst(wireNumber: 11184809, fallback: true)
+  static const EnumTestEnumIntegerOnlyEnum unknownDefaultOpenApi = _$enumTestEnumIntegerOnlyEnum_unknownDefaultOpenApi;
+
+  static Serializer<EnumTestEnumIntegerOnlyEnum> get serializer => _$enumTestEnumIntegerOnlyEnumSerializer;
+
+  const EnumTestEnumIntegerOnlyEnum._(String name): super(name);
+
+  static BuiltSet<EnumTestEnumIntegerOnlyEnum> get values => _$enumTestEnumIntegerOnlyEnumValues;
+  static EnumTestEnumIntegerOnlyEnum valueOf(String name) => _$enumTestEnumIntegerOnlyEnumValueOf(name);
 }
 
 class EnumTestEnumNumberEnum extends EnumClass {

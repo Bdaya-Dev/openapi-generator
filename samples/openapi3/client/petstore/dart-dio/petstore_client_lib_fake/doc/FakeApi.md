@@ -10,13 +10,11 @@ All URIs are relative to *http://petstore.swagger.io:80/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**fakeHealthGet**](FakeApi.md#fakehealthget) | **GET** /fake/health | Health check endpoint
-[**fakeHttpSignatureTest**](FakeApi.md#fakehttpsignaturetest) | **GET** /fake/http-signature-test | test http signature authentication
 [**fakeOuterBooleanSerialize**](FakeApi.md#fakeouterbooleanserialize) | **POST** /fake/outer/boolean | 
 [**fakeOuterCompositeSerialize**](FakeApi.md#fakeoutercompositeserialize) | **POST** /fake/outer/composite | 
 [**fakeOuterNumberSerialize**](FakeApi.md#fakeouternumberserialize) | **POST** /fake/outer/number | 
 [**fakeOuterStringSerialize**](FakeApi.md#fakeouterstringserialize) | **POST** /fake/outer/string | 
-[**fakePropertyEnumIntegerSerialize**](FakeApi.md#fakepropertyenumintegerserialize) | **POST** /fake/property/enum-int | 
-[**testBodyWithBinary**](FakeApi.md#testbodywithbinary) | **PUT** /fake/body-with-binary | 
+[**getArrayOfEnums**](FakeApi.md#getarrayofenums) | **GET** /fake/array-of-enums | Array of Enums
 [**testBodyWithFileSchema**](FakeApi.md#testbodywithfileschema) | **PUT** /fake/body-with-file-schema | 
 [**testBodyWithQueryParams**](FakeApi.md#testbodywithqueryparams) | **PUT** /fake/body-with-query-params | 
 [**testClientModel**](FakeApi.md#testclientmodel) | **PATCH** /fake | To test \&quot;client\&quot; model
@@ -62,53 +60,6 @@ No authorization required
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **fakeHttpSignatureTest**
-> fakeHttpSignatureTest(pet, query1, header1)
-
-test http signature authentication
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-// TODO Configure HTTP basic authorization: http_signature_test
-//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('http_signature_test').password = 'YOUR_PASSWORD';
-
-final api = Openapi().getFakeApi();
-final Pet pet = ; // Pet | Pet object that needs to be added to the store
-final String query1 = query1_example; // String | query parameter
-final String header1 = header1_example; // String | header parameter
-
-try {
-    api.fakeHttpSignatureTest(pet, query1, header1);
-} catch on DioError (e) {
-    print('Exception when calling FakeApi->fakeHttpSignatureTest: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **pet** | [**Pet**](Pet.md)| Pet object that needs to be added to the store | 
- **query1** | **String**| query parameter | [optional] 
- **header1** | **String**| header parameter | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[http_signature_test](../README.md#http_signature_test)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/xml
- - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -284,37 +235,31 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **fakePropertyEnumIntegerSerialize**
-> OuterObjectWithEnumProperty fakePropertyEnumIntegerSerialize(outerObjectWithEnumProperty)
+# **getArrayOfEnums**
+> BuiltList<OuterEnum> getArrayOfEnums()
 
-
-
-Test serialization of enum (int) properties with examples
+Array of Enums
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
 
 final api = Openapi().getFakeApi();
-final OuterObjectWithEnumProperty outerObjectWithEnumProperty = ; // OuterObjectWithEnumProperty | Input enum (int) as post body
 
 try {
-    final response = api.fakePropertyEnumIntegerSerialize(outerObjectWithEnumProperty);
+    final response = api.getArrayOfEnums();
     print(response);
 } catch on DioError (e) {
-    print('Exception when calling FakeApi->fakePropertyEnumIntegerSerialize: $e\n');
+    print('Exception when calling FakeApi->getArrayOfEnums: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **outerObjectWithEnumProperty** | [**OuterObjectWithEnumProperty**](OuterObjectWithEnumProperty.md)| Input enum (int) as post body | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**OuterObjectWithEnumProperty**](OuterObjectWithEnumProperty.md)
+[**BuiltList&lt;OuterEnum&gt;**](OuterEnum.md)
 
 ### Authorization
 
@@ -322,50 +267,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testBodyWithBinary**
-> testBodyWithBinary(body)
-
-
-
-For this test, the body has to be a binary file.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-
-final api = Openapi().getFakeApi();
-final MultipartFile body = BINARY_DATA_HERE; // MultipartFile | image to upload
-
-try {
-    api.testBodyWithBinary(body);
-} catch on DioError (e) {
-    print('Exception when calling FakeApi->testBodyWithBinary: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **MultipartFile**| image to upload | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: image/png
- - **Accept**: Not defined
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -374,7 +277,7 @@ No authorization required
 
 
 
-For this test, the body for this request must reference a schema named `File`.
+For this test, the body for this request much reference a schema named `File`.
 
 ### Example
 ```dart
@@ -767,7 +670,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **testQueryParameterCollectionFormat**
-> testQueryParameterCollectionFormat(pipe, ioutil, http, url, context, allowEmpty, language)
+> testQueryParameterCollectionFormat(pipe, ioutil, http, url, context)
 
 
 
@@ -783,11 +686,9 @@ final BuiltList<String> ioutil = ; // BuiltList<String> |
 final BuiltList<String> http = ; // BuiltList<String> | 
 final BuiltList<String> url = ; // BuiltList<String> | 
 final BuiltList<String> context = ; // BuiltList<String> | 
-final String allowEmpty = allowEmpty_example; // String | 
-final BuiltMap<String, String> language = ; // BuiltMap<String, String> | 
 
 try {
-    api.testQueryParameterCollectionFormat(pipe, ioutil, http, url, context, allowEmpty, language);
+    api.testQueryParameterCollectionFormat(pipe, ioutil, http, url, context);
 } catch on DioError (e) {
     print('Exception when calling FakeApi->testQueryParameterCollectionFormat: $e\n');
 }
@@ -802,8 +703,6 @@ Name | Type | Description  | Notes
  **http** | [**BuiltList&lt;String&gt;**](String.md)|  | 
  **url** | [**BuiltList&lt;String&gt;**](String.md)|  | 
  **context** | [**BuiltList&lt;String&gt;**](String.md)|  | 
- **allowEmpty** | **String**|  | 
- **language** | [**BuiltMap&lt;String, String&gt;**](String.md)|  | [optional] 
 
 ### Return type
 

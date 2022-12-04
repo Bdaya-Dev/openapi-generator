@@ -130,7 +130,7 @@ void main() {
               ..category = (CategoryBuilder()
                 ..id = 1
                 ..name = 'dog')
-              ..photoUrls = SetBuilder<String>(<String>[photo1, photo2])
+              ..photoUrls = ListBuilder<String>(<String>[photo1, photo2])
               ..tags = ListBuilder<Tag>(<Tag>[
                 Tag((t) => t
                   ..id = 3
@@ -235,8 +235,7 @@ void main() {
           request: Request(
             method: RequestMethods.post,
             headers: <String, dynamic>{
-              Headers.contentTypeHeader:
-                  Matchers.pattern('multipart/form-data'),
+              Headers.contentTypeHeader: Matchers.pattern('multipart/form-data'),
               Headers.contentLengthHeader: Matchers.integer,
             },
             data: Matchers.formData(
@@ -272,8 +271,7 @@ void main() {
           request: Request(
             method: RequestMethods.post,
             headers: <String, dynamic>{
-              Headers.contentTypeHeader:
-                  Matchers.pattern('multipart/form-data'),
+              Headers.contentTypeHeader: Matchers.pattern('multipart/form-data'),
               Headers.contentLengthHeader: Matchers.integer,
             },
             data: Matchers.formData(
