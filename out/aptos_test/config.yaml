@@ -1,0 +1,14 @@
+generatorName: dart-dio
+outputDir: out/aptos_test
+inputSpec: out/aptos_test/spec.yaml 
+# https://raw.githubusercontent.com/aptos-labs/aptos-core/devnet/api/doc/spec.yaml
+#
+#https://gist.githubusercontent.com/banool/4ce117aebfed09d4c502bb0999dd7ad7/raw/da7fe14cea6f7445ae575afb9fcbec00f619e733/spec.yaml
+templateDir: modules/openapi-generator/src/main/resources/dart/libraries/dio
+# typeMappings:
+#   Client: "ModelClient"
+#   File: "ModelFile"
+#   EnumClass: "ModelEnumClass"
+additionalProperties:
+  hideGenerationTimestamp: "true"
+  enumUnknownDefaultCase: "true"

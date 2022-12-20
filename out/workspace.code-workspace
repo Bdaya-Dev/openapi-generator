@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "../out/aptos_test"
+		},
+		{
+			"path": "../out"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"name": "dart mustache",
+			"path": "../modules/openapi-generator/src/main/resources/dart"
+		},
+		{
+			"name": "java",
+			"path": "../modules/openapi-generator/src/main/java/org/openapitools/codegen/languages"
+		},
+		{
+			"path": "../samples/openapi3/client/petstore/dart-dio/petstore_client_lib_fake"
+		},
+		{
+			"path": "../samples/openapi3/client/petstore/dart-dio/petstore_client_lib_fake_tests"
+		},
+		{
+			"path": "../samples/openapi3/client/petstore/dart-dio/oneof_polymorphism_and_inheritance"
+		},
+		{
+			"path": "../samples/openapi3/client/petstore/dart-dio/oneof"
+		},
+		{
+			"path": "../samples/openapi3/client/petstore/dart-dio/oneof_primitive"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"samples/openapi3/client/petstore/dart-dio/petstore_client_lib_fake": true,	
+			"samples/openapi3/client/petstore/dart-dio/petstore_client_lib_fake_tests": true,	
+			"samples/openapi3/client/petstore/dart-dio/oneof_polymorphism_and_inheritance": true,	
+			"samples/openapi3/client/petstore/dart-dio/oneof": true,	
+			"samples/openapi3/client/petstore/dart-dio/oneof_primitive": true,	
+			"aptos_test": true,
+			"out": true,			
+		},
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.compile.nullAnalysis.mode": "automatic",
+	}
+}

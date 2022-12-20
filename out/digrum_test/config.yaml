@@ -1,0 +1,15 @@
+generatorName: dart-dio
+outputDir: out/digrum_test
+inputSpec: out/digrum_test/spec.json
+templateDir: modules/openapi-generator/src/main/resources/dart/libraries/dio
+pubName: digrum_api
+pubVersion: 1.0.0
+pubDescription: "Digrum Api Package"
+# legacyDiscriminatorBehavior:
+# typeMappings:
+#   Client: "ModelClient"
+#   File: "ModelFile"
+#   EnumClass: "ModelEnumClass"
+# additionalProperties:
+#   hideGenerationTimestamp: "true"
+#   enumUnknownDefaultCase: "true"
