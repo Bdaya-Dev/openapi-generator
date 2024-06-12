@@ -64,7 +64,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     HealthCheckResult
     
@@ -121,7 +121,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, pet, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, pet, const TypeInfo(
         
     
     Pet
@@ -130,21 +130,21 @@ class FakeApi {
 );    
 
     final _response = await rawApi.fakeHttpSignatureTest(
-            
+      
       query1: encodeQueryParameter(_repository, query1, const TypeInfo(
         
     
     String
     )
 
-, ),
+, )!,
       header1: encodeStringParameter(_repository, header1, const TypeInfo(
         
     
     String
     )
 
-), 
+,)!, 
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,
@@ -182,7 +182,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, body, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, body, const TypeInfo(
         
     
     bool
@@ -206,7 +206,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     bool
     
@@ -259,7 +259,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, outerComposite, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, outerComposite, const TypeInfo(
         
     
     OuterComposite
@@ -283,7 +283,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     OuterComposite
     
@@ -336,7 +336,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, body, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, body, const TypeInfo(
         
     
     num
@@ -360,7 +360,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     num
     
@@ -413,7 +413,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, body, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, body, const TypeInfo(
         
     
     String
@@ -437,7 +437,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     String
     
@@ -490,7 +490,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, outerObjectWithEnumProperty, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, outerObjectWithEnumProperty, const TypeInfo(
         
     
     OuterObjectWithEnumProperty
@@ -514,7 +514,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     OuterObjectWithEnumProperty
     
@@ -567,7 +567,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, body, const TypeInfo.nullable(
+    _bodyData = await encodeBodyParameter(_repository, body, const TypeInfo.nullable(
         
     
     MultipartFile
@@ -614,7 +614,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, fileSchemaTestClass, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, fileSchemaTestClass, const TypeInfo(
         
     
     FileSchemaTestClass
@@ -663,7 +663,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, user, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, user, const TypeInfo(
         
     
     User
@@ -672,14 +672,14 @@ class FakeApi {
 );    
 
     final _response = await rawApi.testBodyWithQueryParams(
-            
+      
       query: encodeQueryParameter(_repository, query, const TypeInfo(
         
     
     String
     )
 
-, ),
+, )!,
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,
@@ -717,7 +717,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, modelClient, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, modelClient, const TypeInfo(
         
     
     ModelClient
@@ -741,7 +741,7 @@ class FakeApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     ModelClient
     
@@ -1015,14 +1015,14 @@ class FakeApi {
 ,
     ])
 
-), 
+,)!, 
       enumHeaderString: encodeStringParameter(_repository, enumHeaderString, const TypeInfo(
         
     EnumHeaderStringEnum
     
     )
 
-),       
+,)!, 
       enumQueryStringArray: encodeQueryParameter(_repository, enumQueryStringArray, const TypeInfo(
     List, [
         
@@ -1035,28 +1035,28 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),      
+, format: ListFormat.multi,)!,
       enumQueryString: encodeQueryParameter(_repository, enumQueryString, const TypeInfo(
         
     EnumQueryStringEnum
     
     )
 
-, ),      
+, )!,
       enumQueryInteger: encodeQueryParameter(_repository, enumQueryInteger, const TypeInfo(
         
     EnumQueryIntegerEnum
     
     )
 
-, ),      
+, )!,
       enumQueryDouble: encodeQueryParameter(_repository, enumQueryDouble, const TypeInfo(
         
     EnumQueryDoubleEnum
     
     )
 
-, ),      
+, )!,
       enumQueryModelArray: encodeQueryParameter(_repository, enumQueryModelArray, const TypeInfo(
     List, [
         
@@ -1069,7 +1069,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),
+, format: ListFormat.multi,)!,
       body: _bodyData,
       requestContentType: 'application/x-www-form-urlencoded',
       cancelToken: cancelToken,
@@ -1118,49 +1118,49 @@ class FakeApi {
   }) async {    
 
     final _response = await rawApi.testGroupParameters(
-            
+      
       requiredStringGroup: encodeQueryParameter(_repository, requiredStringGroup, const TypeInfo(
         
     
     int
     )
 
-, ),
+, )!,
       requiredBooleanGroup: encodeStringParameter(_repository, requiredBooleanGroup, const TypeInfo(
         
     
     bool
     )
 
-),       
+,)!, 
       requiredInt64Group: encodeQueryParameter(_repository, requiredInt64Group, const TypeInfo(
         
     
     int
     )
 
-, ),      
+, )!,
       stringGroup: encodeQueryParameter(_repository, stringGroup, const TypeInfo(
         
     
     int
     )
 
-, ),
+, )!,
       booleanGroup: encodeStringParameter(_repository, booleanGroup, const TypeInfo(
         
     
     bool
     )
 
-),       
+,)!, 
       int64Group: encodeQueryParameter(_repository, int64Group, const TypeInfo(
         
     
     int
     )
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -1197,7 +1197,7 @@ class FakeApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, requestBody, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, requestBody, const TypeInfo(
     Map, [
         TypeInfo(String), 
         const TypeInfo(
@@ -1322,7 +1322,7 @@ class FakeApi {
   }) async {    
 
     final _response = await rawApi.testQueryParameterCollectionFormat(
-            
+      
       pipe: encodeQueryParameter(_repository, pipe, const TypeInfo(
     List, [
         
@@ -1335,7 +1335,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.pipes,),      
+, format: ListFormat.pipes,)!,
       ioutil: encodeQueryParameter(_repository, ioutil, const TypeInfo(
     List, [
         
@@ -1348,7 +1348,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.csv,),      
+, format: ListFormat.csv,)!,
       http: encodeQueryParameter(_repository, http, const TypeInfo(
     List, [
         
@@ -1361,7 +1361,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.ssv,),      
+, format: ListFormat.ssv,)!,
       url: encodeQueryParameter(_repository, url, const TypeInfo(
     List, [
         
@@ -1374,7 +1374,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.csv,),      
+, format: ListFormat.csv,)!,
       context: encodeQueryParameter(_repository, context, const TypeInfo(
     List, [
         
@@ -1387,14 +1387,14 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),      
+, format: ListFormat.multi,)!,
       allowEmpty: encodeQueryParameter(_repository, allowEmpty, const TypeInfo(
         
     
     String
     )
 
-, ),      
+, )!,
       language: encodeQueryParameter(_repository, language, const TypeInfo(
     Map, [
         TypeInfo(String), 
@@ -1407,7 +1407,7 @@ class FakeApi {
 ,
     ])
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,

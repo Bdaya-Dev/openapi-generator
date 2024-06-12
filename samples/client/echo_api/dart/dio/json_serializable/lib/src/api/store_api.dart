@@ -11,7 +11,6 @@ import 'package:openapi/src/api_util.dart';
 import 'package:openapi/models.dart';
 import 'package:openapi/src/model/order.dart';
 
-part 'store_api.g.dart';
 
 class StoreApi {
 
@@ -52,7 +51,7 @@ class StoreApi {
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -102,7 +101,7 @@ class StoreApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
     Map, [
         TypeInfo(String), 
         const TypeInfo(
@@ -169,7 +168,7 @@ class StoreApi {
     int
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -183,7 +182,7 @@ class StoreApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     Order
     
@@ -236,7 +235,7 @@ class StoreApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, order, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, order, const TypeInfo(
         
     
     Order
@@ -260,7 +259,7 @@ class StoreApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     Order
     

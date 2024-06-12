@@ -28,7 +28,7 @@ class BuiltValueJsonRepository extends SerializationRepositoryBase {
     const BuiltValueJsonRepository(this.serializers);
 
     @override
-    FutureOr<T> deserialize<T>(Object? value, TypeInfo targetTypeInfo, {Object? context}) {      
+    T deserialize<T>(Object? value, TypeInfo targetTypeInfo, {Object? context}) {
       if (value is T) {
         return value;
       }
@@ -39,7 +39,7 @@ class BuiltValueJsonRepository extends SerializationRepositoryBase {
     }
     
     @override
-    FutureOr<Object?> serialize<T>(T src, TypeInfo inputTypeInfo, {Object? context}) {
+    Object? serialize<T>(T src, TypeInfo inputTypeInfo, {Object? context}) {
       if (src == null) {
         return null;
       }

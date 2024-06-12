@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 import 'dart:typed_data';
 import 'repository_base.dart';
 import 'package:openapi/models.dart';
@@ -8,7 +9,7 @@ class JsonSerializableRepository extends SerializationRepositoryBase {
     
     /// Transforms an object of arbitrary type [T] (whose information is passed in inputTypeInfo) to a dart primitive
     @override
-    FutureOr<Object?> serialize<T>(T src, TypeInfo inputTypeInfo, {Object? context}) {
+    Object? serialize<T>(T src, TypeInfo inputTypeInfo, {Object? context}) {
         if (src == null) {
             return null;
         }
@@ -42,10 +43,10 @@ class JsonSerializableRepository extends SerializationRepositoryBase {
           return context(src);
         }
 
-        try {          
+        try {
           return (src as dynamic).toJson();
         } on NoSuchMethodError {
-          assert(false, 
+          assert(false,
           '''
           Failed to serialize the object properly, falling back to `toString()`
           ''');
@@ -59,7 +60,7 @@ class JsonSerializableRepository extends SerializationRepositoryBase {
         //Don't rely on T being accurate here, since it won't get passed for generic arguments.
         if (value == null) {
             return null as T;
-        }        
+        }
         final targetRootType = targetTypeInfo.root;
         if (targetRootType == T) {
           //short circuit if we already have the output as the input
@@ -309,7 +310,7 @@ class JsonSerializableRepository extends SerializationRepositoryBase {
               if (value is T) {
                 return value;
               }
-              throw Exception('Cannot deserialize');                      
-        } 
+              throw Exception('Cannot deserialize');
+        }
     }
 }

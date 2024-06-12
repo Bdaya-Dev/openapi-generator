@@ -134,21 +134,21 @@ class FakeApi {
 );    
 
     final _response = await rawApi.fakeHttpSignatureTest(
-            
-      query1: await encodeQueryParameter(_repository, query1, const TypeInfo(
+      
+      query1: encodeQueryParameter(_repository, query1, const TypeInfo(
         
     
     String
     )
 
-, ),
-      header1: await encodeStringParameter(_repository, header1, const TypeInfo(
+, )!,
+      header1: encodeStringParameter(_repository, header1, const TypeInfo(
         
     
     String
     )
 
-), 
+,)!, 
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,
@@ -676,14 +676,14 @@ class FakeApi {
 );    
 
     final _response = await rawApi.testBodyWithQueryParams(
-            
-      query: await encodeQueryParameter(_repository, query, const TypeInfo(
+      
+      query: encodeQueryParameter(_repository, query, const TypeInfo(
         
     
     String
     )
 
-, ),
+, )!,
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,
@@ -825,98 +825,98 @@ class FakeApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      if (integer != null) r'integer': await encodeFormParameter(_repository, integer, const TypeInfo(
+      if (integer != null) r'integer': encodeFormParameter(_repository, integer, const TypeInfo(
         
     
     int
     )
 
 ),
-      if (int32 != null) r'int32': await encodeFormParameter(_repository, int32, const TypeInfo(
+      if (int32 != null) r'int32': encodeFormParameter(_repository, int32, const TypeInfo(
         
     
     int
     )
 
 ),
-      if (int64 != null) r'int64': await encodeFormParameter(_repository, int64, const TypeInfo(
+      if (int64 != null) r'int64': encodeFormParameter(_repository, int64, const TypeInfo(
         
     
     int
     )
 
 ),
-      r'number': await encodeFormParameter(_repository, number, const TypeInfo(
+      r'number': encodeFormParameter(_repository, number, const TypeInfo(
         
     
     num
     )
 
 ),
-      if (float != null) r'float': await encodeFormParameter(_repository, float, const TypeInfo(
+      if (float != null) r'float': encodeFormParameter(_repository, float, const TypeInfo(
         
     
     double
     )
 
 ),
-      r'double': await encodeFormParameter(_repository, double_, const TypeInfo(
+      r'double': encodeFormParameter(_repository, double_, const TypeInfo(
         
     
     double
     )
 
 ),
-      if (string != null) r'string': await encodeFormParameter(_repository, string, const TypeInfo(
+      if (string != null) r'string': encodeFormParameter(_repository, string, const TypeInfo(
         
     
     String
     )
 
 ),
-      r'pattern_without_delimiter': await encodeFormParameter(_repository, patternWithoutDelimiter, const TypeInfo(
+      r'pattern_without_delimiter': encodeFormParameter(_repository, patternWithoutDelimiter, const TypeInfo(
         
     
     String
     )
 
 ),
-      r'byte': await encodeFormParameter(_repository, byte, const TypeInfo(
+      r'byte': encodeFormParameter(_repository, byte, const TypeInfo(
         
     
     String
     )
 
 ),
-      if (binary != null) r'binary': await encodeFormParameter(_repository, binary, const TypeInfo(
+      if (binary != null) r'binary': encodeFormParameter(_repository, binary, const TypeInfo(
         
     
     Uint8List
     )
 
 ),
-      if (date != null) r'date': await encodeFormParameter(_repository, date, const TypeInfo(
+      if (date != null) r'date': encodeFormParameter(_repository, date, const TypeInfo(
         
     
     Date
     )
 
 ),
-      if (dateTime != null) r'dateTime': await encodeFormParameter(_repository, dateTime, const TypeInfo(
+      if (dateTime != null) r'dateTime': encodeFormParameter(_repository, dateTime, const TypeInfo(
         
     
     DateTime
     )
 
 ),
-      if (password != null) r'password': await encodeFormParameter(_repository, password, const TypeInfo(
+      if (password != null) r'password': encodeFormParameter(_repository, password, const TypeInfo(
         
     
     String
     )
 
 ),
-      if (callback != null) r'callback': await encodeFormParameter(_repository, callback, const TypeInfo(
+      if (callback != null) r'callback': encodeFormParameter(_repository, callback, const TypeInfo(
         
     
     String
@@ -982,7 +982,7 @@ class FakeApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      if (enumFormStringArray != null) r'enum_form_string_array': await encodeFormParameter(_repository, enumFormStringArray, const TypeInfo(
+      if (enumFormStringArray != null) r'enum_form_string_array': encodeFormParameter(_repository, enumFormStringArray, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -995,7 +995,7 @@ class FakeApi {
     ])
 
 ),
-      if (enumFormString != null) r'enum_form_string': await encodeFormParameter(_repository, enumFormString, const TypeInfo(
+      if (enumFormString != null) r'enum_form_string': encodeFormParameter(_repository, enumFormString, const TypeInfo(
         
     EnumFormStringEnum
     
@@ -1007,7 +1007,7 @@ class FakeApi {
 
     final _response = await rawApi.testEnumParameters(
       
-      enumHeaderStringArray: await encodeStringParameter(_repository, enumHeaderStringArray, const TypeInfo(
+      enumHeaderStringArray: encodeStringParameter(_repository, enumHeaderStringArray, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1019,15 +1019,15 @@ class FakeApi {
 ,
     ])
 
-), 
-      enumHeaderString: await encodeStringParameter(_repository, enumHeaderString, const TypeInfo(
+,)!, 
+      enumHeaderString: encodeStringParameter(_repository, enumHeaderString, const TypeInfo(
         
     EnumHeaderStringEnum
     
     )
 
-),       
-      enumQueryStringArray: await encodeQueryParameter(_repository, enumQueryStringArray, const TypeInfo(
+,)!, 
+      enumQueryStringArray: encodeQueryParameter(_repository, enumQueryStringArray, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1039,29 +1039,29 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),      
-      enumQueryString: await encodeQueryParameter(_repository, enumQueryString, const TypeInfo(
+, format: ListFormat.multi,)!,
+      enumQueryString: encodeQueryParameter(_repository, enumQueryString, const TypeInfo(
         
     EnumQueryStringEnum
     
     )
 
-, ),      
-      enumQueryInteger: await encodeQueryParameter(_repository, enumQueryInteger, const TypeInfo(
+, )!,
+      enumQueryInteger: encodeQueryParameter(_repository, enumQueryInteger, const TypeInfo(
         
     EnumQueryIntegerEnum
     
     )
 
-, ),      
-      enumQueryDouble: await encodeQueryParameter(_repository, enumQueryDouble, const TypeInfo(
+, )!,
+      enumQueryDouble: encodeQueryParameter(_repository, enumQueryDouble, const TypeInfo(
         
     EnumQueryDoubleEnum
     
     )
 
-, ),      
-      enumQueryModelArray: await encodeQueryParameter(_repository, enumQueryModelArray, const TypeInfo(
+, )!,
+      enumQueryModelArray: encodeQueryParameter(_repository, enumQueryModelArray, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1073,7 +1073,7 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),
+, format: ListFormat.multi,)!,
       body: _bodyData,
       requestContentType: 'application/x-www-form-urlencoded',
       cancelToken: cancelToken,
@@ -1122,49 +1122,49 @@ class FakeApi {
   }) async {    
 
     final _response = await rawApi.testGroupParameters(
-            
-      requiredStringGroup: await encodeQueryParameter(_repository, requiredStringGroup, const TypeInfo(
+      
+      requiredStringGroup: encodeQueryParameter(_repository, requiredStringGroup, const TypeInfo(
         
     
     int
     )
 
-, ),
-      requiredBooleanGroup: await encodeStringParameter(_repository, requiredBooleanGroup, const TypeInfo(
+, )!,
+      requiredBooleanGroup: encodeStringParameter(_repository, requiredBooleanGroup, const TypeInfo(
         
     
     bool
     )
 
-),       
-      requiredInt64Group: await encodeQueryParameter(_repository, requiredInt64Group, const TypeInfo(
+,)!, 
+      requiredInt64Group: encodeQueryParameter(_repository, requiredInt64Group, const TypeInfo(
         
     
     int
     )
 
-, ),      
-      stringGroup: await encodeQueryParameter(_repository, stringGroup, const TypeInfo(
+, )!,
+      stringGroup: encodeQueryParameter(_repository, stringGroup, const TypeInfo(
         
     
     int
     )
 
-, ),
-      booleanGroup: await encodeStringParameter(_repository, booleanGroup, const TypeInfo(
+, )!,
+      booleanGroup: encodeStringParameter(_repository, booleanGroup, const TypeInfo(
         
     
     bool
     )
 
-),       
-      int64Group: await encodeQueryParameter(_repository, int64Group, const TypeInfo(
+,)!, 
+      int64Group: encodeQueryParameter(_repository, int64Group, const TypeInfo(
         
     
     int
     )
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -1257,14 +1257,14 @@ class FakeApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      r'param': await encodeFormParameter(_repository, param, const TypeInfo(
+      r'param': encodeFormParameter(_repository, param, const TypeInfo(
         
     
     String
     )
 
 ),
-      r'param2': await encodeFormParameter(_repository, param2, const TypeInfo(
+      r'param2': encodeFormParameter(_repository, param2, const TypeInfo(
         
     
     String
@@ -1326,8 +1326,8 @@ class FakeApi {
   }) async {    
 
     final _response = await rawApi.testQueryParameterCollectionFormat(
-            
-      pipe: await encodeQueryParameter(_repository, pipe, const TypeInfo(
+      
+      pipe: encodeQueryParameter(_repository, pipe, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1339,8 +1339,8 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.pipes,),      
-      ioutil: await encodeQueryParameter(_repository, ioutil, const TypeInfo(
+, format: ListFormat.pipes,)!,
+      ioutil: encodeQueryParameter(_repository, ioutil, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1352,8 +1352,8 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.csv,),      
-      http: await encodeQueryParameter(_repository, http, const TypeInfo(
+, format: ListFormat.csv,)!,
+      http: encodeQueryParameter(_repository, http, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1365,8 +1365,8 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.ssv,),      
-      url: await encodeQueryParameter(_repository, url, const TypeInfo(
+, format: ListFormat.ssv,)!,
+      url: encodeQueryParameter(_repository, url, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1378,8 +1378,8 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.csv,),      
-      context: await encodeQueryParameter(_repository, context, const TypeInfo(
+, format: ListFormat.csv,)!,
+      context: encodeQueryParameter(_repository, context, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -1391,15 +1391,15 @@ class FakeApi {
 ,
     ])
 
-, format: ListFormat.multi,),      
-      allowEmpty: await encodeQueryParameter(_repository, allowEmpty, const TypeInfo(
+, format: ListFormat.multi,)!,
+      allowEmpty: encodeQueryParameter(_repository, allowEmpty, const TypeInfo(
         
     
     String
     )
 
-, ),      
-      language: await encodeQueryParameter(_repository, language, const TypeInfo(
+, )!,
+      language: encodeQueryParameter(_repository, language, const TypeInfo(
     BuiltMap, [
         TypeInfo(String), 
         const TypeInfo(
@@ -1411,7 +1411,7 @@ class FakeApi {
 ,
     ])
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,

@@ -200,13 +200,13 @@ class UserApi {
 
     final _response = await rawApi.deleteUser(
       
-      username: await encodeStringParameter(_repository, username, const TypeInfo(
+      username: encodeStringParameter(_repository, username, const TypeInfo(
         
     
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -245,13 +245,13 @@ class UserApi {
 
     final _response = await rawApi.getUserByName(
       
-      username: await encodeStringParameter(_repository, username, const TypeInfo(
+      username: encodeStringParameter(_repository, username, const TypeInfo(
         
     
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -321,21 +321,21 @@ class UserApi {
   }) async {    
 
     final _response = await rawApi.loginUser(
-            
-      username: await encodeQueryParameter(_repository, username, const TypeInfo(
+      
+      username: encodeQueryParameter(_repository, username, const TypeInfo(
         
     
     String
     )
 
-, ),      
-      password: await encodeQueryParameter(_repository, password, const TypeInfo(
+, )!,
+      password: encodeQueryParameter(_repository, password, const TypeInfo(
         
     
     String
     )
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -450,13 +450,13 @@ class UserApi {
 
     final _response = await rawApi.updateUser(
       
-      username: await encodeStringParameter(_repository, username, const TypeInfo(
+      username: encodeStringParameter(_repository, username, const TypeInfo(
         
     
     String
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,

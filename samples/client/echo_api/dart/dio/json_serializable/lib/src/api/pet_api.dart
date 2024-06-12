@@ -45,7 +45,7 @@ class PetApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, pet, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, pet, const TypeInfo(
         
     
     Pet
@@ -102,14 +102,14 @@ class PetApi {
     int
     )
 
-),
+,)!,
       apiKey: encodeStringParameter(_repository, apiKey, const TypeInfo(
         
     
     String
     )
 
-), 
+,)!, 
 
       cancelToken: cancelToken,
       headers: headers,
@@ -147,7 +147,7 @@ class PetApi {
   }) async {    
 
     final _response = await rawApi.findPetsByStatus(
-            
+      
       status: encodeQueryParameter(_repository, status, const TypeInfo(
     List, [
         
@@ -160,7 +160,7 @@ class PetApi {
 ,
     ])
 
-, format: ListFormat.csv,),
+, format: ListFormat.csv,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -174,7 +174,7 @@ class PetApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
     List, [
         
         const TypeInfo(
@@ -235,7 +235,7 @@ class PetApi {
   }) async {    
 
     final _response = await rawApi.findPetsByTags(
-            
+      
       tags: encodeQueryParameter(_repository, tags, const TypeInfo(
     Set, [
         
@@ -248,7 +248,7 @@ class PetApi {
 ,
     ])
 
-, format: ListFormat.csv,),
+, format: ListFormat.csv,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -262,7 +262,7 @@ class PetApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
     Set, [
         
         const TypeInfo(
@@ -329,7 +329,7 @@ class PetApi {
     int
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -343,7 +343,7 @@ class PetApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     Pet
     
@@ -396,7 +396,7 @@ class PetApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, pet, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, pet, const TypeInfo(
         
     
     Pet
@@ -473,7 +473,7 @@ class PetApi {
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'application/x-www-form-urlencoded',
       cancelToken: cancelToken,
@@ -541,7 +541,7 @@ class PetApi {
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'multipart/form-data',
       cancelToken: cancelToken,
@@ -556,7 +556,7 @@ class PetApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     ApiResponse
     
@@ -639,7 +639,7 @@ class PetApi {
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'multipart/form-data',
       cancelToken: cancelToken,
@@ -654,7 +654,7 @@ class PetApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     ApiResponse
     

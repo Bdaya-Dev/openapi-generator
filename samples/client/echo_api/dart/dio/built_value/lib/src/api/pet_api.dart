@@ -98,20 +98,20 @@ class PetApi {
 
     final _response = await rawApi.deletePet(
       
-      petId: await encodeStringParameter(_repository, petId, const TypeInfo(
+      petId: encodeStringParameter(_repository, petId, const TypeInfo(
         
     
     int
     )
 
-),
-      apiKey: await encodeStringParameter(_repository, apiKey, const TypeInfo(
+,)!,
+      apiKey: encodeStringParameter(_repository, apiKey, const TypeInfo(
         
     
     String
     )
 
-), 
+,)!, 
 
       cancelToken: cancelToken,
       headers: headers,
@@ -149,8 +149,8 @@ class PetApi {
   }) async {    
 
     final _response = await rawApi.findPetsByStatus(
-            
-      status: await encodeQueryParameter(_repository, status, const TypeInfo(
+      
+      status: encodeQueryParameter(_repository, status, const TypeInfo(
     BuiltList, [
         
         const TypeInfo(
@@ -162,7 +162,7 @@ class PetApi {
 ,
     ])
 
-, format: ListFormat.csv,),
+, format: ListFormat.csv,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -237,8 +237,8 @@ class PetApi {
   }) async {    
 
     final _response = await rawApi.findPetsByTags(
-            
-      tags: await encodeQueryParameter(_repository, tags, const TypeInfo(
+      
+      tags: encodeQueryParameter(_repository, tags, const TypeInfo(
     BuiltSet, [
         
         const TypeInfo(
@@ -250,7 +250,7 @@ class PetApi {
 ,
     ])
 
-, format: ListFormat.csv,),
+, format: ListFormat.csv,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -325,13 +325,13 @@ class PetApi {
 
     final _response = await rawApi.getPetById(
       
-      petId: await encodeStringParameter(_repository, petId, const TypeInfo(
+      petId: encodeStringParameter(_repository, petId, const TypeInfo(
         
     
     int
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -450,14 +450,14 @@ class PetApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      if (name != null) r'name': await encodeFormParameter(_repository, name, const TypeInfo(
+      if (name != null) r'name': encodeFormParameter(_repository, name, const TypeInfo(
         
     
     String
     )
 
 ),
-      if (status != null) r'status': await encodeFormParameter(_repository, status, const TypeInfo(
+      if (status != null) r'status': encodeFormParameter(_repository, status, const TypeInfo(
         
     
     String
@@ -469,13 +469,13 @@ class PetApi {
 
     final _response = await rawApi.updatePetWithForm(
       
-      petId: await encodeStringParameter(_repository, petId, const TypeInfo(
+      petId: encodeStringParameter(_repository, petId, const TypeInfo(
         
     
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'application/x-www-form-urlencoded',
       cancelToken: cancelToken,
@@ -518,14 +518,14 @@ class PetApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      if (additionalMetadata != null) r'additionalMetadata': await encodeFormParameter(_repository, additionalMetadata, const TypeInfo(
+      if (additionalMetadata != null) r'additionalMetadata': encodeFormParameter(_repository, additionalMetadata, const TypeInfo(
         
     
     String
     )
 
 ),
-      if (file != null) r'file': await encodeFormParameter(_repository, file, const TypeInfo(
+      if (file != null) r'file': encodeFormParameter(_repository, file, const TypeInfo(
         
     
     MultipartFile
@@ -537,13 +537,13 @@ class PetApi {
 
     final _response = await rawApi.uploadFile(
       
-      petId: await encodeStringParameter(_repository, petId, const TypeInfo(
+      petId: encodeStringParameter(_repository, petId, const TypeInfo(
         
     
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'multipart/form-data',
       cancelToken: cancelToken,
@@ -616,14 +616,14 @@ class PetApi {
   }) async {    
     Object? _bodyData;
     final _bodyMap = <String, dynamic>{
-      if (additionalMetadata != null) r'additionalMetadata': await encodeFormParameter(_repository, additionalMetadata, const TypeInfo(
+      if (additionalMetadata != null) r'additionalMetadata': encodeFormParameter(_repository, additionalMetadata, const TypeInfo(
         
     
     String
     )
 
 ),
-      r'requiredFile': await encodeFormParameter(_repository, requiredFile, const TypeInfo(
+      r'requiredFile': encodeFormParameter(_repository, requiredFile, const TypeInfo(
         
     
     MultipartFile
@@ -635,13 +635,13 @@ class PetApi {
 
     final _response = await rawApi.uploadFileWithRequiredFile(
       
-      petId: await encodeStringParameter(_repository, petId, const TypeInfo(
+      petId: encodeStringParameter(_repository, petId, const TypeInfo(
         
     
     int
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'multipart/form-data',
       cancelToken: cancelToken,

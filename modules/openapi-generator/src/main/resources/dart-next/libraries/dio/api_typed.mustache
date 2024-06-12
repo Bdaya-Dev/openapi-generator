@@ -43,7 +43,7 @@ class {{classname}} {
     {{#hasFormParams}}
     final _bodyMap = <String, dynamic>{
       {{#formParams}}
-      {{^required}}if ({{{paramName}}} != null) {{/required}}r'{{{baseName}}}': await encodeFormParameter(_repository, {{{paramName}}}, {{>types/recursion_type_info}}),
+      {{^required}}if ({{{paramName}}} != null) {{/required}}r'{{{baseName}}}': encodeFormParameter(_repository, {{{paramName}}}, {{>types/recursion_type_info}}),
       {{/formParams}}
     };
     {{#isMultipart}}
@@ -60,9 +60,9 @@ class {{classname}} {
 
     final _response = await rawApi.{{nickname}}(
       {{#allParams}}{{#isPathParam}}
-      {{paramName}}: await encodeStringParameter(_repository, {{paramName}}, {{>types/recursion_type_info}}),{{/isPathParam}}{{#isQueryParam}}      
-      {{paramName}}: await encodeQueryParameter(_repository, {{paramName}}, {{>types/recursion_type_info}}, {{#collectionFormat}}format: ListFormat.{{.}},{{/collectionFormat}}),{{/isQueryParam}}{{#isHeaderParam}}
-      {{paramName}}: await encodeStringParameter(_repository, {{paramName}}, {{>types/recursion_type_info}}), {{/isHeaderParam}}{{/allParams}}
+      {{paramName}}: encodeStringParameter(_repository, {{paramName}}, {{>types/recursion_type_info}},){{^isNullable}}!{{/isNullable}},{{/isPathParam}}{{#isQueryParam}}
+      {{paramName}}: encodeQueryParameter(_repository, {{paramName}}, {{>types/recursion_type_info}}, {{#collectionFormat}}format: ListFormat.{{.}},{{/collectionFormat}}){{^isNullable}}!{{/isNullable}},{{/isQueryParam}}{{#isHeaderParam}}
+      {{paramName}}: encodeStringParameter(_repository, {{paramName}}, {{>types/recursion_type_info}},){{^isNullable}}!{{/isNullable}}, {{/isHeaderParam}}{{/allParams}}
       {{#hasConsumes}}
       body: _bodyData,
       requestContentType: '{{#prioritizedContentTypes}}{{#-first}}{{{mediaType}}}{{/-first}}{{/prioritizedContentTypes}}',{{/hasConsumes}}

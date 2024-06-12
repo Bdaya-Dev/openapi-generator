@@ -11,7 +11,6 @@ import 'package:openapi/src/api_util.dart';
 import 'package:openapi/models.dart';
 import 'package:openapi/src/model/user.dart';
 
-part 'user_api.g.dart';
 
 class UserApi {
 
@@ -44,7 +43,7 @@ class UserApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, user, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, user, const TypeInfo(
         
     
     User
@@ -91,7 +90,7 @@ class UserApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, user, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, user, const TypeInfo(
     List, [
         
         const TypeInfo(
@@ -144,7 +143,7 @@ class UserApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, user, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, user, const TypeInfo(
     List, [
         
         const TypeInfo(
@@ -205,7 +204,7 @@ class UserApi {
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -250,7 +249,7 @@ class UserApi {
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -264,7 +263,7 @@ class UserApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     User
     
@@ -320,21 +319,21 @@ class UserApi {
   }) async {    
 
     final _response = await rawApi.loginUser(
-            
+      
       username: encodeQueryParameter(_repository, username, const TypeInfo(
         
     
     String
     )
 
-, ),      
+, )!,
       password: encodeQueryParameter(_repository, password, const TypeInfo(
         
     
     String
     )
 
-, ),
+, )!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -348,7 +347,7 @@ class UserApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     String
     
@@ -439,7 +438,7 @@ class UserApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, user, const TypeInfo(
+    _bodyData = await encodeBodyParameter(_repository, user, const TypeInfo(
         
     
     User
@@ -455,7 +454,7 @@ class UserApi {
     String
     )
 
-),
+,)!,
       body: _bodyData,
       requestContentType: 'application/json',
       cancelToken: cancelToken,

@@ -47,13 +47,13 @@ class StoreApi {
 
     final _response = await rawApi.deleteOrder(
       
-      orderId: await encodeStringParameter(_repository, orderId, const TypeInfo(
+      orderId: encodeStringParameter(_repository, orderId, const TypeInfo(
         
     
     String
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,
@@ -164,13 +164,13 @@ class StoreApi {
 
     final _response = await rawApi.getOrderById(
       
-      orderId: await encodeStringParameter(_repository, orderId, const TypeInfo(
+      orderId: encodeStringParameter(_repository, orderId, const TypeInfo(
         
     
     int
     )
 
-),
+,)!,
 
       cancelToken: cancelToken,
       headers: headers,

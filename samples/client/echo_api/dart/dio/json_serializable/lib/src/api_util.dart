@@ -1,27 +1,22 @@
-import 'package:dio/dio.dart';
-import 'dart:convert';
-import 'package:openapi/models.dart';
+import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:dio/dio.dart';
+import 'package:openapi/models.dart';
+
 /// Format the given form parameter object into something that Dio can handle.
-/// Returns primitive or String.
-/// Returns List/Map if the value is BuildList/BuiltMap.
-Object encodeFormParameter<T>(
+Object? encodeFormParameter<T extends Object?>(
   SerializationRepositoryBase repository,
   T value,
   TypeInfo type,
 ) {
-    if (value == null) {
-        return '';
-    }
-    final serialized = repository.serialize(
-        value,
-        type,
-    );    
-    return serialized;
+  return repository.serialize(
+      value,
+      type,
+  );
 }
 
-String encodeStringParameter<T>(
+String? encodeStringParameter<T extends Object?>(
   SerializationRepositoryBase repository,
   T value,
   TypeInfo type,
@@ -29,29 +24,25 @@ String encodeStringParameter<T>(
   return repository.serialize(value, type).toString();
 }
 
-Object encodeBodyParameter<T>(
+Future<Object?> encodeBodyParameter<T extends Object?>(
   SerializationRepositoryBase repository,
   T value,
   TypeInfo type,
-) {
-    if (value == null) {
-        return '';
-    }
-    final serialized = repository.serialize(
+) async {
+    return await repository.serializeAsync(
         value,
         type,
-    );    
-    return serialized;
+    );
 }
 
-Object encodeQueryParameter<T>(
+Object? encodeQueryParameter<T extends Object?>(
   SerializationRepositoryBase repository,
   T value,
   TypeInfo type, {
   ListFormat format = ListFormat.multi,
 }) {
     if (value == null) {
-        return '';
+        return null;
     }
     if (value is String || value is num || value is bool) {
         return value;
@@ -67,7 +58,7 @@ Object encodeQueryParameter<T>(
     return serialized;
 }
 
-ListParam<Object?> encodeCollectionQueryParameter<T>(
+ListParam<Object?> encodeCollectionQueryParameter<T extends Object?>(
   SerializationRepositoryBase repository,
   Iterable<T> value,
   TypeInfo type, {
@@ -77,12 +68,15 @@ ListParam<Object?> encodeCollectionQueryParameter<T>(
         value,
         type,
     );
+    if (serialized == null) {
+      return ListParam([], format);
+    }
     if (serialized is Iterable) {
         return ListParam(serialized.toList(), format);
     }
     throw ArgumentError('Invalid value passed to encodeCollectionQueryParameter');
 }
 
-TOutput decodeResponse<TOutput, TInput extends Object>(SerializationRepositoryBase repository, TInput value, TypeInfo type) {
-  return repository.deserialize(value, type);
+Future<TOutput?> decodeResponse<TOutput, TInput extends Object>(SerializationRepositoryBase repository, TInput value, TypeInfo type) async {
+  return await repository.deserializeAsync(value, type);
 }

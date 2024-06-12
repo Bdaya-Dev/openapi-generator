@@ -15,7 +15,6 @@ import 'package:openapi/src/model/fruit_all_of_disc.dart';
 import 'package:openapi/src/model/fruit_variant1.dart';
 import 'package:openapi/src/model/giga_one_of.dart';
 
-part 'default_api.g.dart';
 
 class DefaultApi {
 
@@ -61,7 +60,7 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     FooBasicGetDefaultResponse
     
@@ -127,7 +126,7 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     GigaOneOf
     
@@ -193,7 +192,7 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     Fruit
     
@@ -246,7 +245,7 @@ class DefaultApi {
     ProgressCallback? onReceiveProgress,
   }) async {    
     Object? _bodyData;
-    _bodyData = encodeBodyParameter(_repository, body, const TypeInfo.nullable(
+    _bodyData = await encodeBodyParameter(_repository, body, const TypeInfo.nullable(
         
     
     Object
@@ -306,7 +305,7 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     FruitVariant1
     
@@ -372,7 +371,7 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-       _responseData = rawResponse == null ? null : decodeResponse(_repository, rawResponse, const TypeInfo(
+       _responseData = rawResponse == null ? null : await decodeResponse(_repository, rawResponse, const TypeInfo(
         
     FruitAllOfDisc
     
